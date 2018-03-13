@@ -1,0 +1,6 @@
+[submodule "PopbillKakao"]
+	path = PopbillKakao
+	url = https://github.com/linkhub-sdk/popbill.kakao.vb6
+[submodule "Linkhub"]
+	path = Linkhub
+	url = https://github.com/linkhub-sdk/linkhub.auth.vb6
