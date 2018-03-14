@@ -539,7 +539,7 @@ Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
 Private KakaoService As New PBKakaoService
 
 '=========================================================================
-' 예약문자전송을 취소합니다.
+' 예약전송을 취소합니다.
 ' - 예약취소는 예약전송시간 10분전까지만 가능합니다.
 '=========================================================================
 Private Sub btnCancelReserve_Click()
@@ -1338,7 +1338,7 @@ Private Sub btnSendFMS_Click()
     '팝빌에 사전 등록된 발신번호
     senderNum = "07043042993"
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
+    '대체문자 전송유형, 공백-미전송, C-친구톡내용 전송, A-대체문자내용 전송
     altSendType = ""
     
     '광고전송 여부
@@ -1422,15 +1422,13 @@ Private Sub btnSendFMS_multi_Click()
     '팝빌에 사전 등록된 발신번호
     senderNum = "07043042993"
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
+    '대체문자 전송유형, 공백-미전송, C-친구톡 내용 전송, A-대체문자내용 전송
     altSendType = ""
     
     '광고전송 여부
     adsYN = True
     
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
-    altSendType = ""
    
     '수신정보 배열, 최대 1000건
     For i = 0 To 99
@@ -1516,9 +1514,6 @@ Private Sub btnSendFMS_same_Click()
     '팝빌에 사전 등록된 발신번호
     senderNum = "07043042993"
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
-    altSendType = ""
-    
     '광고전송 여부
     adsYN = True
     
@@ -1528,7 +1523,7 @@ Private Sub btnSendFMS_same_Click()
     '대체문자 내용
     altContent = "대체문자 테스트입니다."
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
+    '대체문자 전송유형, 공백-미전송, C-친구톡 내용 전송, A-대체문자내용 전송
     altSendType = ""
    
     '수신정보 배열, 최대 1000건
@@ -1593,15 +1588,12 @@ Private Sub btnSendFTS_multi_Click()
     
     '팝빌에 사전 등록된 발신번호
     senderNum = "07043042993"
-    
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
-    altSendType = ""
-    
+        
     '광고전송 여부
     adsYN = True
     
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
+    '대체문자 전송유형, 공백-미전송, C-친구톡내용 전송, A-대체문자내용 전송
     altSendType = ""
    
     '수신정보 배열, 최대 1000건
@@ -1745,10 +1737,7 @@ Private Sub btnSendFTS_same_Click()
     
     '팝빌에 사전 등록된 발신번호
     senderNum = "07043042993"
-    
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
-    altSendType = ""
-    
+        
     '광고전송 여부
     adsYN = True
     
@@ -1758,7 +1747,7 @@ Private Sub btnSendFTS_same_Click()
     '대체문자 내용
     altContent = "대체문자 테스트입니다."
     
-    '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
+    '대체문자 전송유형, 공백-미전송, C-친구톡 내용 전송, A-대체문자 내용 전송
     altSendType = ""
    
     '수신정보 배열, 최대 1000건
