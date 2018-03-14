@@ -692,6 +692,9 @@ Private Sub btnGetCorpInfo_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 카카오톡 전송결과를 확인합니다.
+'=========================================================================
 Private Sub btnGetMessages_Click()
     Dim sentInfo As PBKakaoSentResult
     Dim tmp As String
@@ -824,6 +827,9 @@ Private Sub btnGetPopbillURL_LOGIN_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 팝빌에 등록된 발신번호 목록을 반환합니다.
+'=========================================================================
 Private Sub btnGetSenderNumberList_Click()
     Dim SenderNumberList As Collection
     Dim tmp As String
@@ -845,6 +851,10 @@ Private Sub btnGetSenderNumberList_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 카카오톡 전송내역 팝업 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetURL_BOX_Click()
     Dim url As String
     
@@ -858,6 +868,10 @@ Private Sub btnGetURL_BOX_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 플러스친구 계정관리 팝업 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetURL_PLUSFRIEND_Click()
     Dim url As String
     
@@ -871,6 +885,10 @@ Private Sub btnGetURL_PLUSFRIEND_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 발신번호 관리 팝업 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetURL_SENDER_Click()
     Dim url As String
     
@@ -884,6 +902,10 @@ Private Sub btnGetURL_SENDER_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 알림톡 템플릿 팝업 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetURL_TEMPLATE_Click()
     Dim url As String
     
@@ -953,6 +975,9 @@ Private Sub btnJoinMember_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' (주)카카오로부터 승인된 알림톡 템플릿 목록을 확인합니다.
+'=========================================================================
 Private Sub btnListATSTemplate_Click()
     
     Dim tmp As String
@@ -1016,6 +1041,9 @@ Private Sub btnListContact_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 팝빌에 등록된 플러스친구 계정 목록을 반환합니다.
+'=========================================================================
 Private Sub btnListPlusFriendID_Click()
     Dim plusFriendList As Collection
     Dim tmp As String
@@ -1075,6 +1103,9 @@ Private Sub btnRegistContact_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' 카카오톡 전송내역을 조회합니다.
+'=========================================================================
 Private Sub btnSearch_Click()
     Dim searchList As PBKakaoSearchResult
     Dim SDate As String
@@ -1160,6 +1191,9 @@ Private Sub btnSearch_Click()
     txtResult.Text = tmp
 End Sub
 
+'=========================================================================
+' 알림톡 개별내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendATS_multi_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
@@ -1210,6 +1244,9 @@ Private Sub btnSendATS_multi_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 알림톡 단건전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendATS_one_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
@@ -1256,6 +1293,9 @@ Private Sub btnSendATS_one_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 알림톡 동일내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendATS_same_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
@@ -1308,6 +1348,9 @@ Private Sub btnSendATS_same_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(이미지) 단건전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFMS_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
@@ -1391,6 +1434,9 @@ Private Sub btnSendFMS_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(이미지) 개별내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFMS_multi_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
@@ -1481,6 +1527,9 @@ Private Sub btnSendFMS_multi_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(이미지) 동일내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFMS_same_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
@@ -1571,6 +1620,9 @@ Private Sub btnSendFMS_same_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(텍스트) 개별내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFTS_multi_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
@@ -1647,6 +1699,9 @@ Private Sub btnSendFTS_multi_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(텍스트) 단건전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFTS_one_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
@@ -1718,6 +1773,9 @@ Private Sub btnSendFTS_one_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 친구톡(텍스트) 동일내용 대량전송을 요청합니다.
+'=========================================================================
 Private Sub btnSendFTS_same_Click()
     Dim ReceiptNum As String
     Dim plusFriendID As String
