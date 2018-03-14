@@ -1353,8 +1353,8 @@ Private Sub btnSendFMS_Click()
     '수신자명
     rcvInfo.rcvnm = "수신자이름"
     
-    '친구톡 내용, 최대 1000자
-    rcvInfo.msg = "[테스트] 테스트 템플릿입니다."
+    '친구톡 내용, 최대 400자
+    rcvInfo.msg = "친구톡 내용입니다. 이미지 파일을 전송하는 경우 친구톡 글자수는 최대 400자 입니다."
     
     '대체문자 메시지 내용
     rcvInfo.altmsg = "대체문자 테스트입니다."
@@ -1518,7 +1518,7 @@ Private Sub btnSendFMS_same_Click()
     adsYN = True
     
     '친구톡 내용, 최대 400자
-    content = "친구톡 전송 내용입니다. 최대 1000자 까지 입력할 수 있습니다. 동일한 내용을 개별 수신자에게 전송하는 예제입니다."
+    content = "친구톡 전송 내용입니다. 동일한 내용을 개별 수신자에게 전송하는 예제입니다."
     
     '대체문자 내용
     altContent = "대체문자 테스트입니다."
@@ -1681,7 +1681,7 @@ Private Sub btnSendFTS_one_Click()
     rcvInfo.rcvnm = "수신자이름"
     
     '친구톡 내용, 최대 1000자
-    rcvInfo.msg = "[테스트] 테스트 템플릿입니다."
+    rcvInfo.msg = "친구톡 내용입니다."
     
     '대체문자 메시지 내용
     rcvInfo.altmsg = "대체문자 테스트입니다."
