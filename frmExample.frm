@@ -538,6 +538,10 @@ Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
 
 Private KakaoService As New PBKakaoService
 
+'=========================================================================
+' 예약문자전송을 취소합니다.
+' - 예약취소는 예약전송시간 10분전까지만 가능합니다.
+'=========================================================================
 Private Sub btnCancelReserve_Click()
     Dim Response As PBResponse
     
@@ -551,6 +555,9 @@ Private Sub btnCancelReserve_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' 팝빌 회원아이디 중복여부를 확인합니다.
+'=========================================================================
 Private Sub btnCheckID_Click()
     Dim Response As PBResponse
     
@@ -564,6 +571,10 @@ Private Sub btnCheckID_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' 해당 사업자의 파트너 연동회원 가입여부를 확인합니다.
+' - LinkID는 인증정보로 설정되어 있는 링크아이디 값입니다.
+'=========================================================================
 Private Sub btnCheckIsMember_Click()
     Dim Response As PBResponse
     
@@ -577,6 +588,11 @@ Private Sub btnCheckIsMember_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' 연동회원의 잔여포인트를 확인합니다.
+' - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)
+'   를 통해 확인하시기 바랍니다.
+'=========================================================================
 Private Sub btnGetBalance_Click()
     Dim balance As Double
     
@@ -590,6 +606,9 @@ Private Sub btnGetBalance_Click()
     MsgBox "잔여포인트 : " + CStr(balance)
 End Sub
 
+'=========================================================================
+' 알림톡(ATS) 서비스 과금정보를 확인합니다.
+'=========================================================================
 Private Sub btnGetChargeInfo_ATS_Click()
     Dim ChargeInfo As PBChargeInfo
     Dim tmp As String
@@ -608,6 +627,9 @@ Private Sub btnGetChargeInfo_ATS_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 친구톡 이미지(FMS) 서비스 과금정보를 확인합니다.
+'=========================================================================
 Private Sub btnGetChargeInfo_FMS_Click()
     Dim ChargeInfo As PBChargeInfo
     Dim tmp As String
@@ -626,6 +648,9 @@ Private Sub btnGetChargeInfo_FMS_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 친구톡 텍스트(FTS) 서비스 과금정보를 확인합니다.
+'=========================================================================
 Private Sub btnGetChargeInfo_FTS_Click()
     Dim ChargeInfo As PBChargeInfo
     Dim tmp As String
@@ -644,6 +669,9 @@ Private Sub btnGetChargeInfo_FTS_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 연동회원의 회사정보를 확인합니다.
+'=========================================================================
 Private Sub btnGetCorpInfo_Click()
     Dim CorpInfo As PBCorpInfo
     Dim tmp As String
@@ -727,6 +755,11 @@ Private Sub btnGetMessages_Click()
     txtResult.Text = tmp
 End Sub
 
+'=========================================================================
+' 파트너의 잔여포인트를 확인합니다.
+' - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를
+'   이용하시기 바랍니다.
+'=========================================================================
 Private Sub btnGetPartnerBalance_Click()
     Dim balance As Double
     
@@ -740,6 +773,10 @@ Private Sub btnGetPartnerBalance_Click()
     MsgBox "잔여포인트 : " + CStr(balance)
 End Sub
 
+'=========================================================================
+' 파트너 포인트 충전 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetPartnerURL_CHRG_Click()
     Dim url As String
     
@@ -753,6 +790,10 @@ Private Sub btnGetPartnerURL_CHRG_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 연동회원 포인트 충전 팝업 URL을 반환합니다.
+' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetPopbillURL_CHRG_Click()
     Dim url As String
     
@@ -766,6 +807,10 @@ Private Sub btnGetPopbillURL_CHRG_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 팝빌(www.popbill.com)에 로그인된 팝빌 URL을 반환합니다.
+' - 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+'=========================================================================
 Private Sub btnGetPopbillURL_LOGIN_Click()
     Dim url As String
     
@@ -795,7 +840,6 @@ Private Sub btnGetSenderNumberList_Click()
         tmp = tmp + "발신번호(number) : " + SenderNumber.number + vbCrLf
         tmp = tmp + "대표번호 지정여부(representYN) : " + CStr(SenderNumber.representYN) + vbCrLf
         tmp = tmp + "등록상태(state) : " + CStr(SenderNumber.state) + vbCrLf + vbCrLf
-        
     Next
     
     MsgBox tmp
@@ -853,6 +897,9 @@ Private Sub btnGetURL_TEMPLATE_Click()
     MsgBox "URL : " + vbCrLf + url
 End Sub
 
+'=========================================================================
+' 팝빌 연동회원 가입을 요청합니다.
+'=========================================================================
 Private Sub btnJoinMember_Click()
     Dim joinData As New PBJoinForm
     Dim Response As PBResponse
@@ -944,6 +991,9 @@ Private Sub btnListATSTemplate_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 연동회원의 담당자 목록을 확인합니다.
+'=========================================================================
 Private Sub btnListContact_Click()
     Dim resultList As Collection
     Dim tmp As String
@@ -987,6 +1037,9 @@ Private Sub btnListPlusFriendID_Click()
     MsgBox tmp
 End Sub
 
+'=========================================================================
+' 연동회원의 담당자를 신규로 등록합니다.
+'=========================================================================
 Private Sub btnRegistContact_Click()
     Dim joinData As New PBContactInfo
     Dim Response As PBResponse
@@ -1050,12 +1103,12 @@ Private Sub btnSearch_Click()
     state.Add "4"
     state.Add "5"
     
-    '검색대상 배열, SMS(단문),LMS(장문),MMS(포토)
+    '검색대상 배열, ATS(알림톡), FTS(친구톡 텍스트), FMS(친구톡 이미지)
     Item.Add "ATS"
     Item.Add "FTS"
     Item.Add "FMS"
     
-    '예약문자 검색여부, 공백(전체조회), True(예약전송 조회), False(즉시전송 조회)
+    '예약문자 검색여부, 공백(전체조회), 1(예약전송 조회), 0(즉시전송 조회)
     ReserveYN = ""
     
     '개인조회여부, True(개인조회), False(전체조회)
@@ -1390,7 +1443,7 @@ Private Sub btnSendFMS_multi_Click()
         '수신자명
         rcvInfo.rcvnm = "수신자 이름" + CStr(i)
                  
-        '친구톡 내용, 최대 1000자
+        '친구톡 내용, 최대 400자
         rcvInfo.msg = "친구톡 내용입니다. 수신자에 따라 다른 내용을 전송합니다." + CStr(i)
         
         '대체문자 메시지 내용
@@ -1469,7 +1522,7 @@ Private Sub btnSendFMS_same_Click()
     '광고전송 여부
     adsYN = True
     
-    '친구톡 내용, 최대 1000자
+    '친구톡 내용, 최대 400자
     content = "친구톡 전송 내용입니다. 최대 1000자 까지 입력할 수 있습니다. 동일한 내용을 개별 수신자에게 전송하는 예제입니다."
     
     '대체문자 내용
@@ -1753,6 +1806,9 @@ Private Sub btnSendFTS_same_Click()
     txtReceiptNum.Text = ReceiptNum
 End Sub
 
+'=========================================================================
+' 알림톡(ATS) 전송단가를 확인합니다.
+'=========================================================================
 Private Sub btnUnitCost_ATS_Click()
     Dim unitCost As Single
     
@@ -1766,6 +1822,9 @@ Private Sub btnUnitCost_ATS_Click()
     MsgBox "ATS 전송 단가 : " + CStr(unitCost)
 End Sub
 
+'=========================================================================
+' 친구톡 이미지(FMS) 전송단가를 확인합니다.
+'=========================================================================
 Private Sub btnUnitCost_FMS_Click()
     Dim unitCost As Single
     
@@ -1779,6 +1838,9 @@ Private Sub btnUnitCost_FMS_Click()
     MsgBox "FMS 전송 단가 : " + CStr(unitCost)
 End Sub
 
+'=========================================================================
+' 친구톡 텍스트(FTS) 전송단가를 확인합니다.
+'=========================================================================
 Private Sub btnUnitCost_FTS_Click(Index As Integer)
     Dim unitCost As Single
     
@@ -1792,6 +1854,9 @@ Private Sub btnUnitCost_FTS_Click(Index As Integer)
     MsgBox "FTS 전송 단가 : " + CStr(unitCost)
 End Sub
 
+'=========================================================================
+' 연동회원의 담당자 정보를 수정합니다.
+'=========================================================================
 Private Sub btnUpdateContact_Click()
     Dim joinData As New PBContactInfo
     Dim Response As PBResponse
@@ -1824,6 +1889,9 @@ Private Sub btnUpdateContact_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+'=========================================================================
+' 연동회원의 회사정보를 수정합니다
+'=========================================================================
 Private Sub btnUpdateCorpInfo_Click()
     Dim CorpInfo As New PBCorpInfo
     Dim Response As PBResponse
@@ -1859,4 +1927,3 @@ Private Sub Form_Load()
     '연동환경 설정값 True-개발용, False-상업용
     KakaoService.IsTest = True
 End Sub
-
