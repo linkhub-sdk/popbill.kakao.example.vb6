@@ -531,7 +531,7 @@ Option Explicit
 '=========================================================================
 
 '링크아이디
-Private Const LinkID = "TESTER"
+Private Const linkID = "TESTER"
 
 '비밀키. 유출에 주의하시기 바랍니다.
 Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
@@ -578,7 +578,7 @@ End Sub
 Private Sub btnCheckIsMember_Click()
     Dim Response As PBResponse
     
-    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, LinkID)
+    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, linkID)
     
     If Response Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -927,7 +927,7 @@ Private Sub btnJoinMember_Click()
     Dim Response As PBResponse
  
     '링크 아이디
-    joinData.LinkID = LinkID
+    joinData.linkID = linkID
     
     '사업자번호
     joinData.CorpNum = "0000000403"
@@ -1035,7 +1035,7 @@ Private Sub btnListContact_Click()
     
     For Each info In resultList
         tmp = tmp + info.id + " | " + info.email + " | " + info.hp + " | " + info.personName + " | " + CStr(info.searchAllAllowYN) _
-                + info.tel + " | " + info.fax + " | " + CStr(info.mgrYN) + " | " + info.regDT + vbCrLf
+                + info.tel + " | " + info.fax + " | " + CStr(info.mgrYN) + " | " + info.regDT + " | " + CStr(info.state) + vbCrLf
     Next
     
     MsgBox tmp
@@ -1888,7 +1888,7 @@ End Sub
 '=========================================================================
 ' 친구톡 텍스트(FTS) 전송단가를 확인합니다.
 '=========================================================================
-Private Sub btnUnitCost_FTS_Click(Index As Integer)
+Private Sub btnUnitCost_FTS_Click(index As Integer)
     Dim unitCost As Single
     
     unitCost = KakaoService.GetUnitCost(txtCorpNum.Text, FTS)
@@ -1969,7 +1969,7 @@ Private Sub btnUpdateCorpInfo_Click()
 End Sub
 
 Private Sub Form_Load()
-    KakaoService.Initialize LinkID, SecretKey
+    KakaoService.Initialize linkID, SecretKey
     
     '연동환경 설정값 True-개발용, False-상업용
     KakaoService.IsTest = True
