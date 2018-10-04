@@ -2,245 +2,36 @@ VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmExample 
    Caption         =   "팝빌 카카오톡 API SDK VB6 Example"
-   ClientHeight    =   11415
+   ClientHeight    =   11775
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   17580
    LinkTopic       =   "Form1"
-   ScaleHeight     =   11415
+   ScaleHeight     =   11775
    ScaleWidth      =   17580
    StartUpPosition =   2  '화면 가운데
-   Begin VB.Frame Frame4 
-      Caption         =   "팝빌 카카오톡 관련 기능"
-      Height          =   8055
-      Left            =   120
-      TabIndex        =   31
-      Top             =   3240
-      Width           =   17295
-      Begin VB.TextBox txtResult 
-         Height          =   4080
-         Left            =   240
-         MultiLine       =   -1  'True
-         ScrollBars      =   3  '양방향
-         TabIndex        =   59
-         Top             =   3480
-         Width           =   16815
-      End
-      Begin VB.CommandButton btnCancelReserve 
-         Caption         =   "예약전송 취소"
-         Height          =   495
-         Left            =   6480
-         TabIndex        =   58
-         Top             =   2880
-         Width           =   1455
-      End
-      Begin VB.CommandButton btnGetMessages 
-         Caption         =   "전송상태 확인"
-         Height          =   495
-         Left            =   4920
-         TabIndex        =   57
-         Top             =   2880
-         Width           =   1455
-      End
-      Begin VB.TextBox txtReceiptNum 
-         Height          =   315
-         Left            =   1200
-         TabIndex        =   56
-         Top             =   3045
-         Width           =   3615
-      End
-      Begin VB.Frame Frame9 
-         Caption         =   "카카오톡 관리"
-         Height          =   2895
-         Left            =   11280
-         TabIndex        =   46
-         Top             =   240
-         Width           =   5775
-         Begin VB.CommandButton btnSearch 
-            Caption         =   "전송내역 목록 확인"
-            Height          =   495
-            Left            =   2880
-            TabIndex        =   54
-            Top             =   2160
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnGetURL_SENDER 
-            Caption         =   "발신번호 관리 팝업 URL"
-            Height          =   495
-            Left            =   2880
-            TabIndex        =   53
-            Top             =   360
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnGetSenderNumberList 
-            Caption         =   "발신번호 목록 확인"
-            Height          =   495
-            Left            =   2880
-            TabIndex        =   52
-            Top             =   960
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnGetURL_BOX 
-            Caption         =   "전송내역 조회 팝업 URL"
-            Height          =   495
-            Left            =   2880
-            TabIndex        =   51
-            Top             =   1560
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnListATSTemplate 
-            Caption         =   "알림톡 템플릿 목록 확인"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   50
-            Top             =   2160
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnGetURL_TEMPLATE 
-            Caption         =   "알림톡 템플릿 관리 팝업 URL"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   49
-            Top             =   1560
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnListPlusFriendID 
-            Caption         =   "플러스친구 목록 확인"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   48
-            Top             =   960
-            Width           =   2655
-         End
-         Begin VB.CommandButton btnGetURL_PLUSFRIEND 
-            Caption         =   "플러스친구 계정관리 팝업 URL"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   47
-            Top             =   360
-            Width           =   2655
-         End
-      End
-      Begin VB.Frame Frame8 
-         Caption         =   "친구톡 이미지 전송"
-         Height          =   855
-         Left            =   120
-         TabIndex        =   42
-         Top             =   1920
-         Width           =   5415
-         Begin VB.CommandButton btnSendFMS_multi 
-            Caption         =   "개별 1000건 전송"
-            Height          =   495
-            Left            =   3480
-            TabIndex        =   45
-            Top             =   240
-            Width           =   1695
-         End
-         Begin VB.CommandButton btnSendFMS_same 
-            Caption         =   "대량 1000건 전송"
-            Height          =   495
-            Left            =   1680
-            TabIndex        =   44
-            Top             =   240
-            Width           =   1695
-         End
-         Begin VB.CommandButton btnSendFMS 
-            Caption         =   "1건 전송"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   43
-            Top             =   240
-            Width           =   1455
-         End
-      End
-      Begin VB.Frame Frame7 
-         Caption         =   "친구톡 텍스트 전송"
-         Height          =   855
-         Left            =   5640
-         TabIndex        =   38
-         Top             =   960
-         Width           =   5415
-         Begin VB.CommandButton btnSendFTS_one 
-            Caption         =   "1건 전송"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   41
-            Top             =   240
-            Width           =   1455
-         End
-         Begin VB.CommandButton btnSendFTS_same 
-            Caption         =   "대량 1000건 전송"
-            Height          =   495
-            Left            =   1680
-            TabIndex        =   40
-            Top             =   240
-            Width           =   1695
-         End
-         Begin VB.CommandButton btnSendFTS_multi 
-            Caption         =   "개별 1000건 전송"
-            Height          =   495
-            Left            =   3480
-            TabIndex        =   39
-            Top             =   240
-            Width           =   1695
-         End
-      End
-      Begin VB.Frame Frame6 
-         Caption         =   "알림톡 전송"
-         Height          =   855
-         Left            =   120
-         TabIndex        =   34
-         Top             =   960
-         Width           =   5415
-         Begin VB.CommandButton btnSendATS_multi 
-            Caption         =   "개별 1000건 전송"
-            Height          =   495
-            Left            =   3480
-            TabIndex        =   37
-            Top             =   240
-            Width           =   1695
-         End
-         Begin VB.CommandButton btnSendATS_same 
-            Caption         =   "대량 1000건 전송"
-            Height          =   495
-            Left            =   1680
-            TabIndex        =   36
-            Top             =   240
-            Width           =   1695
-         End
-         Begin VB.CommandButton btnSendATS_one 
-            Caption         =   "1건 전송"
-            Height          =   495
-            Left            =   120
-            TabIndex        =   35
-            Top             =   240
-            Width           =   1455
-         End
-      End
-      Begin VB.TextBox txtReserveDT 
-         Height          =   315
-         Left            =   3075
-         TabIndex        =   32
-         Top             =   360
-         Width           =   3105
-      End
-      Begin VB.Label Label4 
-         Caption         =   "접수번호 : "
-         Height          =   180
-         Left            =   240
-         TabIndex        =   55
-         Top             =   3120
-         Width           =   900
-      End
-      Begin VB.Label Label3 
-         AutoSize        =   -1  'True
-         Caption         =   "예약시간(yyyyMMddHHmmss) : "
-         Height          =   180
-         Left            =   240
-         TabIndex        =   33
-         Top             =   435
-         Width           =   2790
-      End
+   Begin VB.CommandButton btnCancelReserveRN 
+      Caption         =   "예약전송 취소"
+      Height          =   495
+      Left            =   9840
+      TabIndex        =   65
+      Top             =   7320
+      Width           =   2775
+   End
+   Begin VB.CommandButton btnGetMessagesRN 
+      Caption         =   "전송상태 확인"
+      Height          =   495
+      Left            =   7080
+      TabIndex        =   64
+      Top             =   7320
+      Width           =   2655
+   End
+   Begin VB.TextBox txtRequestNum 
+      Height          =   315
+      Left            =   9000
+      TabIndex        =   63
+      Top             =   6840
+      Width           =   3615
    End
    Begin VB.TextBox txtCorpNum 
       Height          =   315
@@ -483,6 +274,262 @@ Begin VB.Form frmExample
       _ExtentY        =   847
       _Version        =   393216
    End
+   Begin VB.Frame Frame10 
+      Caption         =   "요청번호 할당 전송건 처리"
+      Height          =   1335
+      Left            =   6720
+      TabIndex        =   61
+      Top             =   6600
+      Width           =   6255
+      Begin VB.Label Label4 
+         Caption         =   "요청번호(requestNum) :"
+         Height          =   375
+         Left            =   180
+         TabIndex        =   62
+         Top             =   320
+         Width           =   2175
+      End
+   End
+   Begin VB.Frame Frame4 
+      Caption         =   "팝빌 카카오톡 관련 기능"
+      Height          =   8415
+      Left            =   120
+      TabIndex        =   31
+      Top             =   3240
+      Width           =   17295
+      Begin VB.TextBox txtResult 
+         Height          =   3240
+         Left            =   240
+         MultiLine       =   -1  'True
+         ScrollBars      =   3  '양방향
+         TabIndex        =   58
+         Top             =   4920
+         Width           =   16815
+      End
+      Begin VB.CommandButton btnCancelReserve 
+         Caption         =   "예약전송 취소"
+         Height          =   495
+         Left            =   3120
+         TabIndex        =   57
+         Top             =   4080
+         Width           =   2775
+      End
+      Begin VB.CommandButton btnGetMessages 
+         Caption         =   "전송상태 확인"
+         Height          =   495
+         Left            =   360
+         TabIndex        =   56
+         Top             =   4080
+         Width           =   2655
+      End
+      Begin VB.TextBox txtReceiptNum 
+         Height          =   315
+         Left            =   2400
+         TabIndex        =   55
+         Top             =   3600
+         Width           =   3615
+      End
+      Begin VB.Frame Frame9 
+         Caption         =   "카카오톡 관리"
+         Height          =   2895
+         Left            =   11280
+         TabIndex        =   46
+         Top             =   240
+         Width           =   5775
+         Begin VB.CommandButton btnSearch 
+            Caption         =   "전송내역 목록 확인"
+            Height          =   495
+            Left            =   2880
+            TabIndex        =   54
+            Top             =   2160
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnGetURL_SENDER 
+            Caption         =   "발신번호 관리 팝업 URL"
+            Height          =   495
+            Left            =   2880
+            TabIndex        =   53
+            Top             =   360
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnGetSenderNumberList 
+            Caption         =   "발신번호 목록 확인"
+            Height          =   495
+            Left            =   2880
+            TabIndex        =   52
+            Top             =   960
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnGetURL_BOX 
+            Caption         =   "전송내역 조회 팝업 URL"
+            Height          =   495
+            Left            =   2880
+            TabIndex        =   51
+            Top             =   1560
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnListATSTemplate 
+            Caption         =   "알림톡 템플릿 목록 확인"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   50
+            Top             =   2160
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnGetURL_TEMPLATE 
+            Caption         =   "알림톡 템플릿 관리 팝업 URL"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   49
+            Top             =   1560
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnListPlusFriendID 
+            Caption         =   "플러스친구 목록 확인"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   48
+            Top             =   960
+            Width           =   2655
+         End
+         Begin VB.CommandButton btnGetURL_PLUSFRIEND 
+            Caption         =   "플러스친구 계정관리 팝업 URL"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   47
+            Top             =   360
+            Width           =   2655
+         End
+      End
+      Begin VB.Frame Frame8 
+         Caption         =   "친구톡 이미지 전송"
+         Height          =   855
+         Left            =   120
+         TabIndex        =   42
+         Top             =   1920
+         Width           =   5415
+         Begin VB.CommandButton btnSendFMS_multi 
+            Caption         =   "개별 1000건 전송"
+            Height          =   495
+            Left            =   3480
+            TabIndex        =   45
+            Top             =   240
+            Width           =   1695
+         End
+         Begin VB.CommandButton btnSendFMS_same 
+            Caption         =   "대량 1000건 전송"
+            Height          =   495
+            Left            =   1680
+            TabIndex        =   44
+            Top             =   240
+            Width           =   1695
+         End
+         Begin VB.CommandButton btnSendFMS 
+            Caption         =   "1건 전송"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   43
+            Top             =   240
+            Width           =   1455
+         End
+      End
+      Begin VB.Frame Frame7 
+         Caption         =   "친구톡 텍스트 전송"
+         Height          =   855
+         Left            =   5640
+         TabIndex        =   38
+         Top             =   960
+         Width           =   5415
+         Begin VB.CommandButton btnSendFTS_one 
+            Caption         =   "1건 전송"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   41
+            Top             =   240
+            Width           =   1455
+         End
+         Begin VB.CommandButton btnSendFTS_same 
+            Caption         =   "대량 1000건 전송"
+            Height          =   495
+            Left            =   1680
+            TabIndex        =   40
+            Top             =   240
+            Width           =   1695
+         End
+         Begin VB.CommandButton btnSendFTS_multi 
+            Caption         =   "개별 1000건 전송"
+            Height          =   495
+            Left            =   3480
+            TabIndex        =   39
+            Top             =   240
+            Width           =   1695
+         End
+      End
+      Begin VB.Frame Frame6 
+         Caption         =   "알림톡 전송"
+         Height          =   855
+         Left            =   120
+         TabIndex        =   34
+         Top             =   960
+         Width           =   5415
+         Begin VB.CommandButton btnSendATS_multi 
+            Caption         =   "개별 1000건 전송"
+            Height          =   495
+            Left            =   3480
+            TabIndex        =   37
+            Top             =   240
+            Width           =   1695
+         End
+         Begin VB.CommandButton btnSendATS_same 
+            Caption         =   "대량 1000건 전송"
+            Height          =   495
+            Left            =   1680
+            TabIndex        =   36
+            Top             =   240
+            Width           =   1695
+         End
+         Begin VB.CommandButton btnSendATS_one 
+            Caption         =   "1건 전송"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   35
+            Top             =   240
+            Width           =   1455
+         End
+      End
+      Begin VB.TextBox txtReserveDT 
+         Height          =   315
+         Left            =   3075
+         TabIndex        =   32
+         Top             =   360
+         Width           =   3105
+      End
+      Begin VB.Frame Frame14 
+         Caption         =   "접수번호 관련 기능 (요청번호 미할당)"
+         Height          =   1335
+         Left            =   120
+         TabIndex        =   59
+         Top             =   3360
+         Width           =   6255
+         Begin VB.Label Label5 
+            Caption         =   "접수번호(receiptNum) :"
+            Height          =   375
+            Left            =   180
+            TabIndex        =   60
+            Top             =   320
+            Width           =   2175
+         End
+      End
+      Begin VB.Label Label3 
+         AutoSize        =   -1  'True
+         Caption         =   "예약시간(yyyyMMddHHmmss) : "
+         Height          =   180
+         Left            =   240
+         TabIndex        =   33
+         Top             =   435
+         Width           =   2790
+      End
+   End
    Begin VB.Label Label1 
       AutoSize        =   -1  'True
       Caption         =   "팝빌회원 사업자번호 : "
@@ -531,7 +578,7 @@ Option Explicit
 '=========================================================================
 
 '링크아이디
-Private Const linkID = "TESTER"
+Private Const LinkID = "TESTER"
 
 '비밀키. 유출에 주의하시기 바랍니다.
 Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
@@ -546,6 +593,23 @@ Private Sub btnCancelReserve_Click()
     Dim Response As PBResponse
     
     Set Response = KakaoService.CancelReserve(txtCorpNum.Text, txtReceiptNum.Text)
+    
+    If Response Is Nothing Then
+        MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
+        Exit Sub
+    End If
+    
+    MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
+End Sub
+
+'=========================================================================
+'전송요청번호(requestNum)를 할당한 알림톡/친구톡 예약전송건을 취소합니다.
+' - 예약전송 취소는 예약전송시간 10분전까지만 가능하다.
+'=========================================================================
+Private Sub btnCancelReserveRN_Click()
+    Dim Response As PBResponse
+    
+    Set Response = KakaoService.CancelReserveRN(txtCorpNum.Text, txtRequestNum.Text)
     
     If Response Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -578,7 +642,7 @@ End Sub
 Private Sub btnCheckIsMember_Click()
     Dim Response As PBResponse
     
-    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, linkID)
+    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, LinkID)
     
     If Response Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -702,6 +766,73 @@ Private Sub btnGetMessages_Click()
     Dim btnInfo As PBKakaoButton
     
     Set sentInfo = KakaoService.GetMessages(txtCorpNum.Text, txtReceiptNum.Text)
+     
+    If sentInfo Is Nothing Then
+        MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
+        Exit Sub
+    End If
+    
+    tmp = "================== 전송요청 요약정보 ================== " + vbCrLf
+    tmp = tmp + "contentType (카카오톡 유형) : " + sentInfo.contentType + vbCrLf
+    tmp = tmp + "templateCode (템플릿 코드) : " + sentInfo.templateCode + vbCrLf
+    tmp = tmp + "plusFriendID (플러스친구 아이디) : " + sentInfo.plusFriendID + vbCrLf
+    tmp = tmp + "sendNum (발신번호) : " + sentInfo.sendNum + vbCrLf
+    tmp = tmp + "altContent (대체문자 내용) : " + sentInfo.altContent + vbCrLf
+    tmp = tmp + "altSendType (대체문자 유형) : " + sentInfo.altSendType + vbCrLf
+    tmp = tmp + "reserveDT (예약일시) : " + sentInfo.reserveDT + vbCrLf
+    tmp = tmp + "adsYN (광고전송 여부) : " + CStr(sentInfo.adsYN) + vbCrLf
+    tmp = tmp + "imageURL (친구톡 이미지 URL) : " + sentInfo.imageURL + vbCrLf
+    tmp = tmp + "sendCnt (전송건수) : " + sentInfo.sendCnt + vbCrLf
+    tmp = tmp + "successCnt (성공건수) : " + sentInfo.successCnt + vbCrLf
+    tmp = tmp + "failCnt (실패건수) : " + sentInfo.failCnt + vbCrLf
+    tmp = tmp + "altCnt (대체문자 건수) : " + sentInfo.altCnt + vbCrLf
+    tmp = tmp + "cancelCnt (취소건수) : " + sentInfo.cancelCnt + vbCrLf + vbCrLf
+    
+    tmp = tmp + "================== 버튼정보 ==================" + vbCrLf
+    
+    For Each btnInfo In sentInfo.btns
+        tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
+        tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
+        tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
+        tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
+    Next
+    
+    
+    tmp = tmp + vbCrLf + "================== 전송결과정보 ==================" + vbCrLf
+    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT" + vbCrLf
+            
+    For Each info In sentInfo.msgs
+        
+        tmp = tmp + CStr(info.state) + " | "
+        tmp = tmp + info.sendDT + " | "
+        tmp = tmp + CStr(info.result) + " | "
+        tmp = tmp + info.resultDT + " | "
+        tmp = tmp + info.contentType + " | "
+        tmp = tmp + info.receiveNum + " | "
+        tmp = tmp + info.receiveName + " | "
+        tmp = tmp + info.content + " | "
+        tmp = tmp + CStr(info.altContentType) + " | "
+        tmp = tmp + info.altSendDT + " | "
+        tmp = tmp + CStr(info.altResult) + " | "
+        tmp = tmp + info.altResultDT
+        tmp = tmp + vbCrLf
+        
+    Next
+        
+    txtResult.Text = tmp
+End Sub
+
+'=========================================================================
+'전송요청번호(requestNum)를 할당한 알림톡/친구톡 전송내역 및 전송상태를 확인한다.
+'=========================================================================
+Private Sub btnGetMessagesRN_Click()
+
+    Dim sentInfo As PBKakaoSentResult
+    Dim tmp As String
+    Dim info As PBKakaoSentDetail
+    Dim btnInfo As PBKakaoButton
+    
+    Set sentInfo = KakaoService.GetMessagesRN(txtCorpNum.Text, txtRequestNum.Text)
      
     If sentInfo Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -927,7 +1058,7 @@ Private Sub btnJoinMember_Click()
     Dim Response As PBResponse
  
     '링크 아이디
-    joinData.linkID = linkID
+    joinData.LinkID = LinkID
     
     '사업자번호
     joinData.CorpNum = "0000000403"
@@ -1202,12 +1333,13 @@ Private Sub btnSendATS_multi_Click()
     Dim senderNum As String
     Dim altSendType As String
     Dim i As Integer
+    Dim requestNum As String
     
     ' 알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
-    templateCode = "018020000001"
+    templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
     altSendType = ""
@@ -1233,7 +1365,11 @@ Private Sub btnSendATS_multi_Click()
     
     Next
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList)
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
+    
+    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1254,12 +1390,13 @@ Private Sub btnSendATS_one_Click()
     Dim templateCode As String
     Dim senderNum As String
     Dim altSendType As String
+    Dim requestNum As String
     
     '알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
-    templateCode = "018020000001"
+    templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
     altSendType = ""
@@ -1281,8 +1418,11 @@ Private Sub btnSendATS_one_Click()
     
     rcvList.Add rcvInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList)
+    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1306,12 +1446,13 @@ Private Sub btnSendATS_same_Click()
     Dim content As String
     Dim altContent As String
     Dim i As Integer
+    Dim requestNum As String
     
     ' 알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
-    templateCode = "018020000001"
+    templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '알림톡 내용, 최대 1000자
     content = "[테스트] 테스트 템플릿입니다."
@@ -1337,7 +1478,11 @@ Private Sub btnSendATS_same_Click()
     
     Next
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altContent, altSendType, txtReserveDT.Text, rcvList)
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
+    
+    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altContent, altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1363,6 +1508,7 @@ Private Sub btnSendFMS_Click()
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
     Dim imageURL As String
+    Dim requestNum As String
     
     CommonDialog1.FileName = ""
     CommonDialog1.ShowOpen
@@ -1379,7 +1525,7 @@ Private Sub btnSendFMS_Click()
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '대체문자 전송유형, 공백-미전송, C-친구톡내용 전송, A-대체문자내용 전송
     altSendType = ""
@@ -1422,8 +1568,12 @@ Private Sub btnSendFMS_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL)
+    
+    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1450,6 +1600,7 @@ Private Sub btnSendFMS_multi_Click()
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
     Dim imageURL As String
+    Dim requestNum As String
     
     CommonDialog1.FileName = ""
     CommonDialog1.ShowOpen
@@ -1466,7 +1617,7 @@ Private Sub btnSendFMS_multi_Click()
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '대체문자 전송유형, 공백-미전송, C-친구톡 내용 전송, A-대체문자내용 전송
     altSendType = ""
@@ -1515,8 +1666,11 @@ Private Sub btnSendFMS_multi_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL)
+    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1545,6 +1699,7 @@ Private Sub btnSendFMS_same_Click()
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
     Dim imageURL As String
+    Dim requestNum As String
     
     CommonDialog1.FileName = ""
     CommonDialog1.ShowOpen
@@ -1561,7 +1716,7 @@ Private Sub btnSendFMS_same_Click()
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '광고전송 여부
     adsYN = True
@@ -1608,8 +1763,11 @@ Private Sub btnSendFMS_same_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL)
+    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1634,12 +1792,13 @@ Private Sub btnSendFTS_multi_Click()
     Dim rcvInfo As New PBKakaoReceiver
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
+    Dim requestNum As String
     
     '플러스친구 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
         
     '광고전송 여부
     adsYN = True
@@ -1687,8 +1846,12 @@ Private Sub btnSendFTS_multi_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList)
+    
+    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1712,13 +1875,14 @@ Private Sub btnSendFTS_one_Click()
     Dim rcvInfo As New PBKakaoReceiver
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
+    Dim requestNum As String
     
     
     '플러스친구 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
     
     '대체문자 전송유형, 공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송
     altSendType = ""
@@ -1761,8 +1925,12 @@ Private Sub btnSendFTS_one_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList)
+    
+    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1789,12 +1957,13 @@ Private Sub btnSendFTS_same_Click()
     Dim rcvInfo As New PBKakaoReceiver
     Dim btnList As New Collection
     Dim btnInfo As New PBKakaoButton
+    Dim requestNum As String
     
     '플러스친구 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
-    senderNum = "07043042993"
+    senderNum = "07043042992"
         
     '광고전송 여부
     adsYN = True
@@ -1841,8 +2010,11 @@ Private Sub btnSendFTS_same_Click()
     
     btnList.Add btnInfo
     
+    '전송요청번호, 파트너가 전송요청에 대한 관리번호를 직접 할당하여 관리하는 경우 기재
+    '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
+    requestNum = ""
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList)
+    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
     If ReceiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1969,8 +2141,9 @@ Private Sub btnUpdateCorpInfo_Click()
 End Sub
 
 Private Sub Form_Load()
-    KakaoService.Initialize linkID, SecretKey
+    KakaoService.Initialize LinkID, SecretKey
     
     '연동환경 설정값 True-개발용, False-상업용
     KakaoService.IsTest = True
 End Sub
+
