@@ -559,7 +559,7 @@ Attribute VB_Exposed = False
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
 ' - VB6 SDK 연동환경 설정방법 안내 : http://blog.linkhub.co.kr/569/
-' - 업데이트 일자 : 2018-03-14
+' - 업데이트 일자 : 2018-10-04
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -799,7 +799,7 @@ Private Sub btnGetMessages_Click()
     
     
     tmp = tmp + vbCrLf + "================== 전송결과정보 ==================" + vbCrLf
-    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT" + vbCrLf
+    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT | receiptNum | requestNum" + vbCrLf
             
     For Each info In sentInfo.msgs
         
@@ -814,7 +814,9 @@ Private Sub btnGetMessages_Click()
         tmp = tmp + CStr(info.altContentType) + " | "
         tmp = tmp + info.altSendDT + " | "
         tmp = tmp + CStr(info.altResult) + " | "
-        tmp = tmp + info.altResultDT
+        tmp = tmp + info.altResultDT + " | "
+        tmp = tmp + info.receiptNum + " | "
+        tmp = tmp + info.requestNum
         tmp = tmp + vbCrLf
         
     Next
@@ -866,7 +868,7 @@ Private Sub btnGetMessagesRN_Click()
     
     
     tmp = tmp + vbCrLf + "================== 전송결과정보 ==================" + vbCrLf
-    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT" + vbCrLf
+    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT | receiptNum | requestNum" + vbCrLf
             
     For Each info In sentInfo.msgs
         
@@ -881,7 +883,9 @@ Private Sub btnGetMessagesRN_Click()
         tmp = tmp + CStr(info.altContentType) + " | "
         tmp = tmp + info.altSendDT + " | "
         tmp = tmp + CStr(info.altResult) + " | "
-        tmp = tmp + info.altResultDT
+        tmp = tmp + info.altResultDT + " | "
+        tmp = tmp + info.receiptNum + " | "
+        tmp = tmp + info.requestNum
         tmp = tmp + vbCrLf
         
     Next
@@ -1236,6 +1240,7 @@ End Sub
 
 '=========================================================================
 ' 카카오톡 전송내역을 조회합니다.
+'  - 최대 검색기간 : 6개월 이내
 '=========================================================================
 Private Sub btnSearch_Click()
     Dim searchList As PBKakaoSearchResult
@@ -1250,12 +1255,13 @@ Private Sub btnSearch_Click()
     Dim Order As String
     Dim tmp As String
     Dim info As PBKakaoSentDetail
+    Dim QString As String
     
     '[필수] 시작일자, 날자형식(yyyyMMdd)
-    SDate = "20180101"
+    SDate = "20180801"
     
     '[필수] 종료일자, 날자형식(yyyyMMdd)
-    EDate = "20181231"
+    EDate = "20180820"
     
     '전송상태값 배열, 0-대기, 1-전송중, 2-성공, 3- 대체, 4-실패, 5-취소
     state.Add "0"
@@ -1284,8 +1290,11 @@ Private Sub btnSearch_Click()
     
     '정렬방향, D-내림차순(기본값), A-오름차순
     Order = "D"
+    
+    '조회 검색어, 수신자명 기재
+    QString = ""
 
-    Set searchList = KakaoService.Search(txtCorpNum.Text, SDate, EDate, state, Item, ReserveYN, SenderYN, Page, PerPage, Order)
+    Set searchList = KakaoService.Search(txtCorpNum.Text, SDate, EDate, state, Item, ReserveYN, SenderYN, Page, PerPage, Order, QString)
      
     If searchList Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1299,7 +1308,7 @@ Private Sub btnSearch_Click()
     tmp = tmp + "pageNum (페이지 번호) : " + CStr(searchList.pageNum) + vbCrLf
     tmp = tmp + "pageCount (페이지 개수) : " + CStr(searchList.pageCount) + vbCrLf + vbCrLf
     
-    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT" + vbCrLf
+    tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT | receiptNum | requestNum" + vbCrLf
             
     For Each info In searchList.list
         
@@ -1314,7 +1323,9 @@ Private Sub btnSearch_Click()
         tmp = tmp + CStr(info.altContentType) + " | "
         tmp = tmp + info.altSendDT + " | "
         tmp = tmp + CStr(info.altResult) + " | "
-        tmp = tmp + info.altResultDT
+        tmp = tmp + info.altResultDT + " | "
+        tmp = tmp + info.receiptNum + " | "
+        tmp = tmp + info.requestNum
         tmp = tmp + vbCrLf
         
     Next
@@ -1328,7 +1339,7 @@ End Sub
 Private Sub btnSendATS_multi_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim templateCode As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1369,15 +1380,15 @@ Private Sub btnSendATS_multi_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
@@ -1386,7 +1397,7 @@ End Sub
 Private Sub btnSendATS_one_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim templateCode As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1422,15 +1433,15 @@ Private Sub btnSendATS_one_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, "", "", altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
@@ -1439,7 +1450,7 @@ End Sub
 Private Sub btnSendATS_same_Click()
     Dim rcvList As New Collection
     Dim rcvInfo As New PBKakaoReceiver
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim templateCode As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1482,22 +1493,22 @@ Private Sub btnSendATS_same_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altContent, altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, senderNum, content, altContent, altSendType, txtReserveDT.Text, rcvList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(이미지) 단건전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFMS_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1573,22 +1584,22 @@ Private Sub btnSendFMS_Click()
     requestNum = ""
     
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(이미지) 개별내용 대량전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFMS_multi_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1670,22 +1681,22 @@ Private Sub btnSendFMS_multi_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(이미지) 동일내용 대량전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFMS_same_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1767,22 +1778,22 @@ Private Sub btnSendFMS_same_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFMS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, filePath, imageURL, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(텍스트) 개별내용 대량전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFTS_multi_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1851,22 +1862,22 @@ Private Sub btnSendFTS_multi_Click()
     requestNum = ""
     
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(텍스트) 단건전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFTS_one_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -1930,22 +1941,22 @@ Private Sub btnSendFTS_one_Click()
     requestNum = ""
     
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, "", "", altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
 ' 친구톡(텍스트) 동일내용 대량전송을 요청합니다.
 '=========================================================================
 Private Sub btnSendFTS_same_Click()
-    Dim ReceiptNum As String
+    Dim receiptNum As String
     Dim plusFriendID As String
     Dim senderNum As String
     Dim altSendType As String
@@ -2014,15 +2025,15 @@ Private Sub btnSendFTS_same_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    ReceiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
+    receiptNum = KakaoService.SendFTS(txtCorpNum.Text, plusFriendID, senderNum, content, altContent, altSendType, txtReserveDT.Text, adsYN, rcvList, btnList, txtUserID.Text, requestNum)
     
-    If ReceiptNum = "" Then
+    If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "접수 번호 : " + ReceiptNum
-    txtReceiptNum.Text = ReceiptNum
+    MsgBox "접수 번호 : " + receiptNum
+    txtReceiptNum.Text = receiptNum
 End Sub
 
 '=========================================================================
