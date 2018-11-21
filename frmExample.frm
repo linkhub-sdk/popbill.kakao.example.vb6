@@ -64,7 +64,7 @@ Begin VB.Form frmExample
          TabIndex        =   22
          Top             =   240
          Width           =   1815
-         Begin VB.CommandButton btnGetPopbillURL_LOGIN 
+         Begin VB.CommandButton btnGetAccessURL 
             Caption         =   " 팝빌 로그인 URL"
             Height          =   410
             Left            =   120
@@ -233,7 +233,7 @@ Begin VB.Form frmExample
             Top             =   360
             Width           =   1695
          End
-         Begin VB.CommandButton btnGetPopbillURL_CHRG 
+         Begin VB.CommandButton btnGetChargeURL 
             Caption         =   "포인트 충전 URL"
             Height          =   410
             Left            =   120
@@ -344,7 +344,7 @@ Begin VB.Form frmExample
             Top             =   2160
             Width           =   2655
          End
-         Begin VB.CommandButton btnGetURL_SENDER 
+         Begin VB.CommandButton btnGetSenderNumberMgtURL 
             Caption         =   "발신번호 관리 팝업 URL"
             Height          =   495
             Left            =   2880
@@ -360,7 +360,7 @@ Begin VB.Form frmExample
             Top             =   960
             Width           =   2655
          End
-         Begin VB.CommandButton btnGetURL_BOX 
+         Begin VB.CommandButton btnGetSentListURL 
             Caption         =   "전송내역 조회 팝업 URL"
             Height          =   495
             Left            =   2880
@@ -376,7 +376,7 @@ Begin VB.Form frmExample
             Top             =   2160
             Width           =   2655
          End
-         Begin VB.CommandButton btnGetURL_TEMPLATE 
+         Begin VB.CommandButton btnGetATSTemplateMgtURL 
             Caption         =   "알림톡 템플릿 관리 팝업 URL"
             Height          =   495
             Left            =   120
@@ -392,7 +392,7 @@ Begin VB.Form frmExample
             Top             =   960
             Width           =   2655
          End
-         Begin VB.CommandButton btnGetURL_PLUSFRIEND 
+         Begin VB.CommandButton btnGetPlusFriendMgtURL 
             Caption         =   "플러스친구 계정관리 팝업 URL"
             Height          =   495
             Left            =   120
@@ -559,7 +559,7 @@ Attribute VB_Exposed = False
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
 ' - VB6 SDK 연동환경 설정방법 안내 : http://blog.linkhub.co.kr/569/
-' - 업데이트 일자 : 2018-10-04
+' - 업데이트 일자 : 2018-11-21
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -652,6 +652,10 @@ Private Sub btnCheckIsMember_Click()
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
 
+
+
+
+
 '=========================================================================
 ' 연동회원의 잔여포인트를 확인합니다.
 ' - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)
@@ -732,6 +736,8 @@ Private Sub btnGetChargeInfo_FTS_Click()
     
     MsgBox tmp
 End Sub
+
+
 
 '=========================================================================
 ' 연동회원의 회사정보를 확인합니다.
@@ -932,10 +938,10 @@ End Sub
 ' 연동회원 포인트 충전 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetPopbillURL_CHRG_Click()
+Private Sub btnGetChargeURL_Click()
     Dim url As String
     
-    url = KakaoService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "CHRG")
+    url = KakaoService.GetChargeURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -949,10 +955,11 @@ End Sub
 ' 팝빌(www.popbill.com)에 로그인된 팝빌 URL을 반환합니다.
 ' - 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetPopbillURL_LOGIN_Click()
+Private Sub btnGetAccessURL_Click()
+
     Dim url As String
     
-    url = KakaoService.GetPopbillURL(txtCorpNum.Text, txtUserID.Text, "LOGIN")
+    url = KakaoService.GetAccessURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -961,6 +968,8 @@ Private Sub btnGetPopbillURL_LOGIN_Click()
     
     MsgBox "URL : " + vbCrLf + url
 End Sub
+
+
 
 '=========================================================================
 ' 팝빌에 등록된 발신번호 목록을 반환합니다.
@@ -990,10 +999,11 @@ End Sub
 ' 카카오톡 전송내역 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetURL_BOX_Click()
+Private Sub btnGetSentListURL_Click()
+
     Dim url As String
     
-    url = KakaoService.GetURL(txtCorpNum.Text, txtUserID.Text, "BOX")
+    url = KakaoService.GetSentListURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1007,10 +1017,11 @@ End Sub
 ' 플러스친구 계정관리 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetURL_PLUSFRIEND_Click()
+Private Sub btnGetPlusFriendMgtURL_Click()
+
     Dim url As String
     
-    url = KakaoService.GetURL(txtCorpNum.Text, txtUserID.Text, "PLUSFRIEND")
+    url = KakaoService.GetPlusFriendMgtURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1024,10 +1035,11 @@ End Sub
 ' 발신번호 관리 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetURL_SENDER_Click()
+Private Sub btnGetSenderNumberMgtURL_Click()
+
     Dim url As String
     
-    url = KakaoService.GetURL(txtCorpNum.Text, txtUserID.Text, "SENDER")
+    url = KakaoService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1041,10 +1053,11 @@ End Sub
 ' 알림톡 템플릿 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
-Private Sub btnGetURL_TEMPLATE_Click()
+Private Sub btnGetATSTemplateMgtURL_Click()
+
     Dim url As String
     
-    url = KakaoService.GetURL(txtCorpNum.Text, txtUserID.Text, "TEMPLATE")
+    url = KakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserID.Text)
     
     If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1053,6 +1066,10 @@ Private Sub btnGetURL_TEMPLATE_Click()
     
     MsgBox "URL : " + vbCrLf + url
 End Sub
+
+
+
+
 
 '=========================================================================
 ' 팝빌 연동회원 가입을 요청합니다.
@@ -1346,7 +1363,7 @@ Private Sub btnSendATS_multi_Click()
     Dim i As Integer
     Dim requestNum As String
     
-    ' 알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
+    ' 알림톡 템플릿코드 - ListATStemplate API, GetATSTemplateMgtURL API, 또는 팝빌사이트에서 확인
     templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
@@ -1403,7 +1420,7 @@ Private Sub btnSendATS_one_Click()
     Dim altSendType As String
     Dim requestNum As String
     
-    '알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
+    '알림톡 템플릿코드 - ListATStemplate API, GetATSTemplateMgtURL API, 또는 팝빌사이트에서 확인
     templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
@@ -1459,7 +1476,7 @@ Private Sub btnSendATS_same_Click()
     Dim i As Integer
     Dim requestNum As String
     
-    ' 알림톡 템플릿코드 - ListATStemplate API, GetURL(TEMPLATE) API, 또는 팝빌사이트에서 확인
+    ' 알림톡 템플릿코드 - ListATStemplate API, GetATSTemplateMgtURL API, 또는 팝빌사이트에서 확인
     templateCode = "018060000152"
     
     '팝빌에 사전 등록된 발신번호
