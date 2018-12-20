@@ -794,15 +794,16 @@ Private Sub btnGetMessages_Click()
     tmp = tmp + "altCnt (대체문자 건수) : " + sentInfo.altCnt + vbCrLf
     tmp = tmp + "cancelCnt (취소건수) : " + sentInfo.cancelCnt + vbCrLf + vbCrLf
     
-    tmp = tmp + "================== 버튼정보 ==================" + vbCrLf
-    
-    For Each btnInfo In sentInfo.btns
-        tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
-        tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
-        tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
-        tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
-    Next
-    
+    If (sentInfo.btns Is Nothing) = False Then
+        tmp = tmp + "================== 버튼정보 ==================" + vbCrLf
+        
+        For Each btnInfo In sentInfo.btns
+            tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
+            tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
+            tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
+            tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
+        Next
+    End If
     
     tmp = tmp + vbCrLf + "================== 전송결과정보 ==================" + vbCrLf
     tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT | receiptNum | requestNum" + vbCrLf
@@ -863,15 +864,16 @@ Private Sub btnGetMessagesRN_Click()
     tmp = tmp + "altCnt (대체문자 건수) : " + sentInfo.altCnt + vbCrLf
     tmp = tmp + "cancelCnt (취소건수) : " + sentInfo.cancelCnt + vbCrLf + vbCrLf
     
-    tmp = tmp + "================== 버튼정보 ==================" + vbCrLf
-    
-    For Each btnInfo In sentInfo.btns
-        tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
-        tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
-        tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
-        tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
-    Next
-    
+    If (sentInfo.btns Is Nothing) = False Then
+        tmp = tmp + "================== 버튼정보 ==================" + vbCrLf
+        
+        For Each btnInfo In sentInfo.btns
+            tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
+            tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
+            tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
+            tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
+        Next
+    End If
     
     tmp = tmp + vbCrLf + "================== 전송결과정보 ==================" + vbCrLf
     tmp = tmp + "state | sendDT | result | resultDT | contentType | receiveNum | receiveName | content | altContentType | altSendDT | altResult | altResultDT | receiptNum | requestNum" + vbCrLf
