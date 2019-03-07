@@ -560,7 +560,7 @@ Attribute VB_Exposed = False
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
 ' - VB6 SDK 연동환경 설정방법 안내 : http://blog.linkhub.co.kr/569/
-' - 업데이트 일자 : 2019-02-14
+' - 업데이트 일자 : 2019-03-07
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -1103,12 +1103,22 @@ Private Sub btnSendATS_ONE_Click()
     Dim altSendType As String
     Dim receiptNum As String
     Dim requestNum As String
+    Dim content As String
     
     '알림톡 템플릿코드 - ListATStemplate API, GetPlusFriendMgtURL API, 또는 팝빌사이트에서 확인
-    templateCode = "018110000047"
+    templateCode = "019020000163"
     
     '팝빌에 사전 등록된 발신번호
     snd = "07043042992"
+    
+    '알림톡 내용, 최대 1000자
+    content = "[ 팝빌 ]" + vbCrLf
+    content = content + "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다." + vbCrLf
+    content = content + "해당 템플릿으로 전송 가능합니다." + vbCrLf + vbCrLf
+    content = content + "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다. " + vbCrLf + vbCrLf
+    content = content + "팝빌 파트너센터 : 1600-8536" + vbCrLf
+    content = content + "support@linkhub.co.kr"
+    
     
     '대체문자 전송유형 (공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송)
     altSendType = "A"
@@ -1117,7 +1127,7 @@ Private Sub btnSendATS_ONE_Click()
     Dim Messages As New Collection
     Dim info As New PBKakaoReceiver
     
-    info.msg = "테스트 템플릿 입니다" '알림톡 내용, 최대 1000자
+    info.msg = content                '알림톡 내용, 최대 1000자
     info.altmsg = "알림톡 대체 문자"  '대체문자 내용, 최대 2000byte
     info.rcv = "010123456"            '수신번호
     info.rcvnm = "popbill"            '수신자명
@@ -1128,7 +1138,23 @@ Private Sub btnSendATS_ONE_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, "", "", altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum)
+    
+    ' 알림톡 버튼정보를 템플릿 신청시 기재한 버튼정보와 동일하게 전송하는 경우 btns를 빈 배열로 처리.
+    Dim Buttons As New Collection
+    
+    ' 알림톡 버튼 URL에 #{템플릿변수}를 기재한경우 템플릿변수 값을 변경하여 버튼정보 구성
+    'Dim btn As PBKakaoButton
+    'Set btn = New PBKakaoButton
+    
+    'btn.n = "버튼명"                        '버튼명
+    'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+   
+    'Buttons.Add btn
+    
+    
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, "", "", altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum, Buttons)
     
     If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1163,13 +1189,18 @@ Private Sub btnSendATS_SAME_Click()
     Dim requestNum As String
     
     '알림톡 템플릿코드 - ListATStemplate API, GetPlusFriendMgtURL API, 또는 팝빌사이트에서 확인
-    templateCode = "018110000047"
+    templateCode = "019020000163"
     
     '팝빌에 사전 등록된 발신번호
     snd = "07043042992"
     
     '(동보) 알림톡 내용, 최대 1000자
-    content = "테스트 템플릿 입니다"
+    content = "[ 팝빌 ]" + vbCrLf
+    content = content + "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다." + vbCrLf
+    content = content + "해당 템플릿으로 전송 가능합니다." + vbCrLf + vbCrLf
+    content = content + "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다. " + vbCrLf + vbCrLf
+    content = content + "팝빌 파트너센터 : 1600-8536" + vbCrLf
+    content = content + "support@linkhub.co.kr"
     
     '(동보) 대체문자 내용, 최대 2000byte
     altContent = "알림톡 대체 문자"
@@ -1181,9 +1212,9 @@ Private Sub btnSendATS_SAME_Click()
     Dim Messages As New Collection
     Dim info As PBKakaoReceiver
     
-    For i = 1 To 100
+    For i = 1 To 10
         Set info = New PBKakaoReceiver
-        info.rcv = "010123456" + CStr(i)  '수신번호
+        info.rcv = "01011122" + CStr(i)  '수신번호
         info.rcvnm = "popbill_" + CStr(i) '수신자명
         Messages.Add info
     Next
@@ -1192,7 +1223,22 @@ Private Sub btnSendATS_SAME_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, content, altContent, altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum)
+    ' 알림톡 버튼정보를 템플릿 신청시 기재한 버튼정보와 동일하게 전송하는 경우 btns를 빈 배열로 처리.
+    Dim Buttons As New Collection
+    
+    ' 알림톡 버튼 URL에 #{템플릿변수}를 기재한경우 템플릿변수 값을 변경하여 버튼정보 구성
+    'Dim btn As PBKakaoButton
+    'Set btn = New PBKakaoButton
+    
+    'btn.n = "버튼명"                        '버튼명
+    'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+   
+    'Buttons.Add btn
+
+
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, content, altContent, altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum, Buttons)
     
     If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1219,16 +1265,25 @@ End Sub
 Private Sub btnSendATS_MULTI_Click()
     Dim templateCode As String
     Dim snd As String
+    Dim content As String
     Dim altSendType As String
     Dim receiptNum As String
     Dim i As Integer
     Dim requestNum As String
     
     '알림톡 템플릿코드 - ListATStemplate API, GetPlusFriendMgtURL API, 또는 팝빌사이트에서 확인
-    templateCode = "018110000047"
+    templateCode = "019020000163"
     
     '팝빌에 사전 등록된 발신번호
     snd = "07043042992"
+    
+    '알림톡 내용, 최대 1000자
+    content = "[ 팝빌 ]" + vbCrLf
+    content = content + "신청하신 #{템플릿코드}에 대한 심사가 완료되어 승인 처리되었습니다." + vbCrLf
+    content = content + "해당 템플릿으로 전송 가능합니다." + vbCrLf + vbCrLf
+    content = content + "문의사항 있으시면 파트너센터로 편하게 연락주시기 바랍니다. " + vbCrLf + vbCrLf
+    content = content + "팝빌 파트너센터 : 1600-8536" + vbCrLf
+    content = content + "support@linkhub.co.kr"
     
     '대체문자 전송유형 (공백-미전송, C-알림톡내용 전송, A-대체문자내용 전송)
     altSendType = "A"
@@ -1237,11 +1292,11 @@ Private Sub btnSendATS_MULTI_Click()
     Dim Messages As New Collection
     Dim info As PBKakaoReceiver
 
-    For i = 1 To 100
+    For i = 1 To 10
         Set info = New PBKakaoReceiver
-        info.rcv = "010123456" + CStr(i)                    '수신번호
+        info.rcv = "01011122" + CStr(i)                    '수신번호
         info.rcvnm = "popbill_" + CStr(i)                   '수신자명
-        info.msg = "테스트 템플릿 입니다"                   '알림톡 내용, 최대 1000자
+        info.msg = content                   '알림톡 내용, 최대 1000자
         info.altmsg = "알림톡 대체 문자입니다." + CStr(i)   '대체문자 메시지 내용, 최대 2000byte
         Messages.Add info
     Next
@@ -1250,7 +1305,21 @@ Private Sub btnSendATS_MULTI_Click()
     '최대 36자리, 영문, 숫자, 언더바('_'), 하이픈('-')을 조합하여 사업자별로 중복되지 않도록 구성
     requestNum = ""
     
-    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, "", "", altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum)
+    ' 알림톡 버튼정보를 템플릿 신청시 기재한 버튼정보와 동일하게 전송하는 경우 btns를 빈 배열로 처리.
+    Dim Buttons As New Collection
+    
+    ' 알림톡 버튼 URL에 #{템플릿변수}를 기재한경우 템플릿변수 값을 변경하여 버튼정보 구성
+    'Dim btn As PBKakaoButton
+    'Set btn = New PBKakaoButton
+    
+    'btn.n = "버튼명"                        '버튼명
+    'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+   
+    'Buttons.Add btn
+    
+    receiptNum = KakaoService.SendATS(txtCorpNum.Text, templateCode, snd, "", "", altSendType, txtSndDT.Text, Messages, txtUserID.Text, requestNum, Buttons)
     
     If receiptNum = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -1382,7 +1451,7 @@ Private Sub btnSendFTS_SAME_Click()
     Dim Messages As New Collection
     Dim info As PBKakaoReceiver
     
-    For i = 1 To 100
+    For i = 1 To 10
         Set info = New PBKakaoReceiver
         info.rcv = "010123456" + CStr(i)    '수신번호
         info.rcvnm = "popbill_" + CStr(i)   '수신자명
@@ -1459,7 +1528,7 @@ Private Sub btnSendFTS_multi_Click()
     Dim Messages As New Collection
     Dim info As PBKakaoReceiver
     
-    For i = 1 To 100
+    For i = 1 To 10
         Set info = New PBKakaoReceiver
         info.rcv = "010123456" + CStr(i)                   '수신번호
         info.rcvnm = "popbill_" + CStr(i)                  '수신자명
@@ -1659,7 +1728,7 @@ Private Sub btnSendFMS_SAME_Click()
     altSendType = ""
    
     '수신정보 배열, 최대 1000건
-    For i = 0 To 99
+    For i = 0 To 10
     
         Set rcvInfo = New PBKakaoReceiver
         
@@ -1755,7 +1824,7 @@ Private Sub btnSendFMS_MULTI_Click()
     
        
     '수신정보 배열, 최대 1000건
-    For i = 0 To 99
+    For i = 0 To 10
     
         Set rcvInfo = New PBKakaoReceiver
         
