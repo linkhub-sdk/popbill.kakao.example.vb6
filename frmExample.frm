@@ -559,7 +559,7 @@ Attribute VB_Exposed = False
 '
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
-' - 업데이트 일자 : 2019-09-26
+' - 업데이트 일자 : 2019-12-02
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -1147,8 +1147,8 @@ Private Sub btnSendATS_ONE_Click()
     
     'btn.n = "버튼명"                        '버튼명
     'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
    
     'Buttons.Add btn
     
@@ -1231,8 +1231,8 @@ Private Sub btnSendATS_SAME_Click()
     
     'btn.n = "버튼명"                        '버튼명
     'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
    
     'Buttons.Add btn
 
@@ -1313,8 +1313,8 @@ Private Sub btnSendATS_MULTI_Click()
     
     'btn.n = "버튼명"                        '버튼명
     'btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    'btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    'btn.u1 = "https://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    'btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
    
     'Buttons.Add btn
     
@@ -1380,8 +1380,8 @@ Private Sub btnSendFTS_ONE_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     Buttons.Add btn
     
@@ -1465,8 +1465,8 @@ Private Sub btnSendFTS_SAME_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     Buttons.Add btn
     
@@ -1544,8 +1544,8 @@ Private Sub btnSendFTS_multi_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     Buttons.Add btn
 
@@ -1642,8 +1642,8 @@ Private Sub btnSendFMS_ONE_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     btnList.Add btnInfo
     
@@ -1747,8 +1747,8 @@ Private Sub btnSendFMS_SAME_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     btnList.Add btnInfo
     
@@ -1849,8 +1849,8 @@ Private Sub btnSendFMS_MULTI_Click()
     
     btn.n = "버튼명"                        '버튼명
     btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
-    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-Android, 웹링크-Mobile
-    btn.u2 = "http://www.popbill.com"       '앱링크-IOS, 웹링크-PC
+    btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
+    btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
     btnList.Add btnInfo
     
