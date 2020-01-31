@@ -597,12 +597,13 @@ Private Const LinkID = "TESTER"
 '비밀키. 유출에 주의하시기 바랍니다.
 Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
 
-'카카오톡 클래스 선언
+'카카오톡 서비스 클래스 선언
 Private KakaoService As New PBKakaoService
 
 '=========================================================================
 ' 파트너의 연동회원으로 가입된 사업자번호인지 확인합니다.
 ' - LinkID는 인증정보로 설정되어 있는 링크아이디 값입니다.
+' - https://docs.popbill.com/kakao/vb/api#CheckIsMember
 '=========================================================================
 Private Sub btnCheckIsMember_Click()
     Dim Response As PBResponse
@@ -619,6 +620,7 @@ End Sub
 
 '=========================================================================
 ' 팝빌 회원아이디 중복여부를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#CheckID
 '=========================================================================
 Private Sub btnCheckID_Click()
     Dim Response As PBResponse
@@ -635,6 +637,7 @@ End Sub
 
 '=========================================================================
 ' 팝빌 연동회원 가입을 요청합니다.
+' - https://docs.popbill.com/kakao/vb/api#JoinMember
 '=========================================================================
 Private Sub btnJoinMember_Click()
     Dim joinData As New PBJoinForm
@@ -695,6 +698,7 @@ End Sub
 
 '=========================================================================
 ' 알림톡(ATS) 전송단가를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetUnitCost
 '=========================================================================
 Private Sub btnGetUnitCost_ATS_Click()
     Dim unitCost As Single
@@ -711,6 +715,7 @@ End Sub
 
 '=========================================================================
 ' 친구톡 텍스트 (FTS) 전송단가를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetUnitCost
 '=========================================================================
 Private Sub btnGetUnitCost_FTS_Click(index As Integer)
     Dim unitCost As Single
@@ -727,6 +732,7 @@ End Sub
 
 '=========================================================================
 ' 친구톡 이미지 (FMS) 전송단가를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetUnitCost
 '=========================================================================
 Private Sub btnGetUnitCost_FMS_Click(index As Integer)
     Dim unitCost As Single
@@ -743,6 +749,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 알림톡 API 서비스 과금정보를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetChargeInfo
 '=========================================================================
 Private Sub btnGetChargeInfo_ATS_Click()
     Dim ChargeInfo As PBChargeInfo
@@ -765,6 +772,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 친구톡 텍스트 API 서비스 과금정보를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetChargeInfo
 '=========================================================================
 Private Sub btnGetChargeInfo_FTS_Click()
     Dim ChargeInfo As PBChargeInfo
@@ -787,6 +795,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 친구톡 이미지 API 서비스 과금정보를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetChargeInfo
 '=========================================================================
 Private Sub btnGetChargeInfo_FMS_Click()
     Dim ChargeInfo As PBChargeInfo
@@ -811,6 +820,7 @@ End Sub
 ' 연동회원의 잔여포인트를 확인합니다.
 ' - 과금방식이 파트너과금인 경우 파트너 잔여포인트(GetPartnerBalance API)
 '   를 통해 확인하시기 바랍니다.
+' - https://docs.popbill.com/kakao/vb/api#GetBalance
 '=========================================================================
 Private Sub btnGetBalance_Click()
     Dim balance As Double
@@ -828,6 +838,7 @@ End Sub
 '=========================================================================
 ' 연동회원 포인트 충전 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetChargeURL
 '=========================================================================
 Private Sub btnGetChargeURL_Click()
 
@@ -848,6 +859,7 @@ End Sub
 ' 파트너의 잔여포인트를 확인합니다.
 ' - 과금방식이 연동과금인 경우 연동회원 잔여포인트(GetBalance API)를
 '   이용하시기 바랍니다.
+' - https://docs.popbill.com/kakao/vb/api#GetPartnerBalance
 '=========================================================================
 Private Sub btnGetPartnerBalance_Click()
     Dim balance As Double
@@ -865,6 +877,7 @@ End Sub
 '=========================================================================
 ' 파트너 포인트 충전 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetPartnerURL
 '=========================================================================
 Private Sub btnGetPartnerURL_CHRG_Click()
     Dim url As String
@@ -902,6 +915,7 @@ End Sub
 '=========================================================================
 ' 팝빌 로그인 팝업 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetAccessURL
 '=========================================================================
 Private Sub btnGetAccessURL_Click()
 
@@ -920,6 +934,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 담당자를 신규로 등록합니다.
+' - https://docs.popbill.com/kakao/vb/api#RegistContact
 '=========================================================================
 Private Sub btnRegistContact_Click()
     Dim joinData As New PBContactInfo
@@ -964,6 +979,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 담당자 목록을 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#ListContact
 '=========================================================================
 
 Private Sub btnListContact_Click()
@@ -991,6 +1007,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 담당자 정보를 수정합니다.
+' - https://docs.popbill.com/kakao/vb/api#UpdateContact
 '=========================================================================
 Private Sub btnUpdateContact_Click()
     Dim joinData As New PBContactInfo
@@ -1032,6 +1049,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 회사정보를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetCorpInfo
 '=========================================================================
 Private Sub btnGetCorpInfo_Click()
     Dim CorpInfo As PBCorpInfo
@@ -1055,6 +1073,7 @@ End Sub
 
 '=========================================================================
 ' 연동회원의 회사정보를 수정합니다
+' - https://docs.popbill.com/kakao/vb/api#UpdateCorpInfo
 '=========================================================================
 Private Sub btnUpdateCorpInfo_Click()
     Dim CorpInfo As New PBCorpInfo
@@ -1088,13 +1107,8 @@ End Sub
 '=========================================================================
 '단건의 알림톡을 전송합니다.
 ' - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(msg)이 다를 경우 전송실패 처리된다.
-' - 알림톡 템플릿 등록방법.  (사이트/API 등록방법 제공)
-'     1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [카카오톡 관리] > 알림톡 템플릿 관리
-'     2.getATSTemplateMgtURL API를 통해 반환된 URL을 이용하여 템플릿 관리
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendATS
 '=========================================================================
 Private Sub btnSendATS_ONE_Click()
     Dim templateCode As String
@@ -1169,13 +1183,8 @@ End Sub
 '=========================================================================
 '[동보전송] 알림톡 전송을 요청합니다.
 ' - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(content)이 다를 경우 전송실패 처리된다.
-' - 알림톡 템플릿 등록방법.  (사이트/API 등록방법 제공)
-'     1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [카카오톡 관리] > 알림톡 템플릿 관리
-'     2.getATSTemplateMgtURL API를 통해 반환된 URL을 이용하여 템플릿 관리
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendATS
 '=========================================================================
 Private Sub btnSendATS_SAME_Click()
     Dim templateCode As String
@@ -1253,13 +1262,8 @@ End Sub
 '=========================================================================
 '[대량전송] 알림톡 전송을 요청합니다.
 ' - 사전에 승인된 템플릿의 내용과 알림톡 전송내용(msg)이 다를 경우 전송실패 처리된다.
-' - 알림톡 템플릿 등록방법.  (사이트/API 등록방법 제공)
-'     1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [카카오톡 관리] > 알림톡 템플릿 관리
-'     2.getATSTemplateMgtURL API를 통해 반환된 URL을 이용하여 템플릿 관리
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendATS
 '=========================================================================
 Private Sub btnSendATS_MULTI_Click()
     Dim templateCode As String
@@ -1335,9 +1339,7 @@ End Sub
 '단건의 친구톡텍스트를 전송합니다.
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFTS
 '=========================================================================
 Private Sub btnSendFTS_ONE_Click()
     Dim receiptNum As String
@@ -1413,9 +1415,7 @@ End Sub
 '[동보전송] 친구톡(텍스트) 전송을 요청합니다.
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFTS
 '=========================================================================
 Private Sub btnSendFTS_SAME_Click()
     Dim receiptNum As String
@@ -1498,9 +1498,7 @@ End Sub
 '[대량전송] 친구톡(텍스트) 전송을 요청합니다.
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFTS
 '=========================================================================
 Private Sub btnSendFTS_multi_Click()
     Dim receiptNum As String
@@ -1578,9 +1576,7 @@ End Sub
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 전송포맷-JPG파일 / 용량제한-최대500kbyte / 이미지 높이/너비 비율 1.333-이하, 1/2이상
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFMS
 '=========================================================================================
 Private Sub btnSendFMS_ONE_Click()
     Dim receiptNum As String
@@ -1676,9 +1672,7 @@ End Sub
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 전송포맷-JPG파일 / 용량제한-최대500kbyte / 이미지 높이/너비 비율 1.333-이하, 1/2이상
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFMS
 '=========================================================================================
 Private Sub btnSendFMS_SAME_Click()
     Dim receiptNum As String
@@ -1779,9 +1773,7 @@ End Sub
 ' - 친구톡은 심야 전송(20:00~08:00)이 제한됩니다.
 ' - 전송포맷-JPG파일 / 용량제한-최대500kbyte / 이미지 높이/너비 비율 1.333-이하, 1/2이상
 ' - 팝빌에 등록되지 않은 발신번호로 알림톡 메시지를 전송하는 경우 발신 번호 미등록 오류로 처리된다.
-' - 발신번호 사전등록 방법. (사이트/API 등록방법 제공)
-'    1.팝빌 사이트 로그인 [문자/팩스] > [카카오톡] > [발신번호 사전등록] 에서 등록
-'    2.getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
+' - https://docs.popbill.com/kakao/vb/api#SendFMS
 '=========================================================================================
 Private Sub btnSendFMS_MULTI_Click()
     Dim receiptNum As String
@@ -1878,7 +1870,8 @@ Private Sub btnSendFMS_MULTI_Click()
 End Sub
 
 '=========================================================================
-'알림톡/친구톡 전송요청시 발급받은 접수번호(receiptNum)로 전송결과를 확인합니다.
+' 알림톡/친구톡 전송요청시 발급받은 접수번호(receiptNum)로 전송결과를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetMessages
 '=========================================================================
 Private Sub btnGetMessages_Click()
     Dim tmp As String
@@ -1949,8 +1942,9 @@ Private Sub btnGetMessages_Click()
 End Sub
 
 '=========================================================================
-'알림톡/친구톡 예약전송을 취소합니다.
+' 알림톡/친구톡 예약전송을 취소합니다.
 ' - 예약전송 취소는 예약전송시간 10분전까지만 가능하다.
+' - https://docs.popbill.com/kakao/vb/api#CancelReserve
 '=========================================================================
 Private Sub btnCancelReserve_Click()
     Dim Response As PBResponse
@@ -1966,7 +1960,8 @@ Private Sub btnCancelReserve_Click()
 End Sub
 
 '=========================================================================
-'전송요청번호(requestNum)를 할당한 알림톡/친구톡 전송내역 및 전송상태를 확인한다.
+' 전송요청번호(requestNum)를 할당한 알림톡/친구톡 전송내역 및 전송상태를 확인한다.
+' - https://docs.popbill.com/kakao/vb/api#GetMessagesRN
 '=========================================================================
 Private Sub btnGetMessagesRN_Click()
 
@@ -2038,8 +2033,9 @@ Private Sub btnGetMessagesRN_Click()
 End Sub
 
 '=========================================================================
-'전송요청번호(requestNum)를 할당한 알림톡/친구톡 예약전송건을 취소합니다.
+' 전송요청번호(requestNum)를 할당한 알림톡/친구톡 예약전송건을 취소합니다.
 ' - 예약전송 취소는 예약전송시간 10분전까지만 가능하다.
+' - https://docs.popbill.com/kakao/vb/api#CancelReserveRN
 '=========================================================================
 Private Sub btnCancelReserveRN_Click()
     Dim Response As PBResponse
@@ -2057,6 +2053,7 @@ End Sub
 '=========================================================================
 '카카오톡 채널 계정관리 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetPlusFriendMgtURL
 '=========================================================================
 Private Sub btnGetPlusFriendMgtURL_Click()
     Dim url As String
@@ -2072,7 +2069,8 @@ Private Sub btnGetPlusFriendMgtURL_Click()
 End Sub
 
 '=========================================================================
-'팝빌에 등록된 카카오톡 채널 목록을 반환 합니다.
+' 팝빌에 등록된 카카오톡 채널 목록을 반환 합니다.
+' - https://docs.popbill.com/kakao/vb/api#ListPlusFriendID
 '=========================================================================
 Private Sub btnListPlusFriendID_Click()
     Dim PlusFriendIDList As Collection
@@ -2114,7 +2112,8 @@ Private Sub btnGetATSTemplateMgtURL_Click()
 End Sub
 
 '=========================================================================
-'팝빌에 등록된 알림톡 템플릿 목록을 확인 합니다.
+' 팝빌에 등록된 알림톡 템플릿 목록을 확인 합니다.
+' - https://docs.popbill.com/kakao/vb/api#ListATSTemplate
 '=========================================================================
 Private Sub btnListATSTemplate_Click()
     Dim tmp As String
@@ -2152,8 +2151,9 @@ Private Sub btnListATSTemplate_Click()
 End Sub
 
 '=========================================================================
-'발신번호 관리 URL을 반환 합니다.
+' 발신번호 관리 URL을 반환 합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetSenderNumberMgtURL
 '=========================================================================
 Private Sub btnGetSenderNumberMgtURL_Click()
     Dim url As String
@@ -2170,7 +2170,8 @@ Private Sub btnGetSenderNumberMgtURL_Click()
 End Sub
 
 '=========================================================================
-'팝빌에 등록된 발신번호 목록을 확인 합니다.
+' 팝빌에 등록된 발신번호 목록을 확인 합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetSenderNumberList
 '=========================================================================
 Private Sub btnGetSenderNumberList_Click()
     Dim SenderNumberList As Collection
@@ -2193,11 +2194,10 @@ Private Sub btnGetSenderNumberList_Click()
     MsgBox tmp
 End Sub
 
-
-
 '=========================================================================
-'알림톡/친구톡 전송내역 URL을 반환합니다.
+' 알림톡/친구톡 전송내역 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
+' - https://docs.popbill.com/kakao/vb/api#GetSentListURL
 '=========================================================================
 Private Sub btnGetSentListURL_Click()
 
@@ -2214,9 +2214,10 @@ Private Sub btnGetSentListURL_Click()
 End Sub
 
 '=========================================================================
-'알림톡/친구톡 전송 목록을 조회합니다.
+' 알림톡/친구톡 전송 목록을 조회합니다.
 ' - 버튼정보를 확인하는 경우 GetMessages (알림톡/친구톡 전송내역 확인) API 사용
 ' - 최대 검색기간 : 6개월 이내
+' - https://docs.popbill.com/kakao/vb/api#Search
 '=========================================================================
 Private Sub btnSearch_Click()
     Dim searchList As PBKakaoSearchResult
