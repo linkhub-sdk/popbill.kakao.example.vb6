@@ -386,7 +386,7 @@ Begin VB.Form frmExample
             Width           =   2655
          End
          Begin VB.CommandButton btnListPlusFriendID 
-            Caption         =   "플러스친구 목록 확인"
+            Caption         =   "카카오톡 채널 목록 확인"
             Height          =   495
             Left            =   120
             TabIndex        =   48
@@ -394,7 +394,7 @@ Begin VB.Form frmExample
             Width           =   2655
          End
          Begin VB.CommandButton btnGetPlusFriendMgtURL 
-            Caption         =   "플러스친구 계정관리 팝업 URL"
+            Caption         =   "카카오톡 채널 관리 팝업 URL"
             Height          =   495
             Left            =   120
             TabIndex        =   47
@@ -559,7 +559,7 @@ Attribute VB_Exposed = False
 '
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
-' - 업데이트 일자 : 2019-12-02
+' - 업데이트 일자 : 2020-01-31
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -569,13 +569,13 @@ Attribute VB_Exposed = False
 '
 ' 2) 팝빌 개발용 사이트(test.popbill.com)에 연동회원으로 가입합니다.
 '
-' 3) 친구톡/알림톡을 전송하기 위해 발신번호 사전등록을 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
+' 3) 알림톡/친구톡을 전송하기 위해 발신번호 사전등록을 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
 '   - 팝빌 사이트 로그인 > [문자/팩스] > [카카오톡] > [발신번호 사전등록] 메뉴에서 등록
 '   - getSenderNumberMgtURL API를 통해 반환된 URL을 이용하여 발신번호 등록
 '
-' 4) 친구톡/알림톡을 전송하기 위해 플러스친구를 등록 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
-'   - 팝빌 사이트 로그인 > [문자/팩스] > [카카오톡] > [카카오톡 관리]  > 플러스친구 계정관리 메뉴에서 등록
-'   - GetPlusFriendMgtURL API를 통해 반환된 URL을 이용하여 플러스친구 계정관리 등록
+' 4) 알림톡/친구톡을 전송하기 위해 카카오톡 채널를 등록 합니다. (등록방법은 사이트/API 두가지 방식이 있습니다.)
+'   - 팝빌 사이트 로그인 > [문자/팩스] > [카카오톡] > [카카오톡 관리]  > 카카오톡 채널 계정관리 메뉴에서 등록
+'   - GetPlusFriendMgtURL API를 통해 반환된 URL을 이용하여 카카오톡 채널 계정관리 등록
 '
 ' 5) 알림톡 전송을 하기 위해  알림톡 템플릿을 신청 합니다.  (등록방법은 사이트/API 두가지 방식이 있습니다.)
 '   - 팝빌 사이트 로그인 > [문자/팩스] > [카카오톡] > [카카오톡 관리]  > 알림톡 템플릿 관리 메뉴에서 등록
@@ -1349,7 +1349,7 @@ Private Sub btnSendFTS_ONE_Click()
     Dim adsYN As Boolean
     Dim requestNum As String
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1428,7 +1428,7 @@ Private Sub btnSendFTS_SAME_Click()
     Dim i As Integer
     Dim requestNum As String
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1511,7 +1511,7 @@ Private Sub btnSendFTS_multi_Click()
     Dim requestNum As String
     Dim i As Integer
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1607,7 +1607,7 @@ Private Sub btnSendFMS_ONE_Click()
     '이미지 링크 URL
     imageURL = "http://www.popbill.com"
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1708,7 +1708,7 @@ Private Sub btnSendFMS_SAME_Click()
     '이미지 링크 URL
     imageURL = "http://www.popbill.com"
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1809,7 +1809,7 @@ Private Sub btnSendFMS_MULTI_Click()
     '이미지 링크 URL
     imageURL = "http://www.popbill.com"
     
-    '플러스친구 아이디
+    '카카오톡 채널 아이디
     plusFriendID = "@팝빌"
     
     '팝빌에 사전 등록된 발신번호
@@ -1897,7 +1897,7 @@ Private Sub btnGetMessages_Click()
     tmp = "==== 전송요청 요약정보 ==== " + vbCrLf
     tmp = tmp + "contentType (카카오톡 유형) : " + sentInfo.contentType + vbCrLf
     tmp = tmp + "templateCode (템플릿 코드) : " + sentInfo.templateCode + vbCrLf
-    tmp = tmp + "plusFriendID (플러스친구 아이디) : " + sentInfo.plusFriendID + vbCrLf
+    tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + sentInfo.plusFriendID + vbCrLf
     tmp = tmp + "sendNum (발신번호) : " + sentInfo.sendNum + vbCrLf
     tmp = tmp + "altContent (대체문자 내용) : " + sentInfo.altContent + vbCrLf
     tmp = tmp + "altSendType (대체문자 유형) : " + sentInfo.altSendType + vbCrLf
@@ -1986,7 +1986,7 @@ Private Sub btnGetMessagesRN_Click()
     tmp = "==== 전송요청 요약정보 ==== " + vbCrLf
     tmp = tmp + "contentType (카카오톡 유형) : " + sentInfo.contentType + vbCrLf
     tmp = tmp + "templateCode (템플릿 코드) : " + sentInfo.templateCode + vbCrLf
-    tmp = tmp + "plusFriendID (플러스친구 아이디) : " + sentInfo.plusFriendID + vbCrLf
+    tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + sentInfo.plusFriendID + vbCrLf
     tmp = tmp + "sendNum (발신번호) : " + sentInfo.sendNum + vbCrLf
     tmp = tmp + "altContent (대체문자 내용) : " + sentInfo.altContent + vbCrLf
     tmp = tmp + "altSendType (대체문자 유형) : " + sentInfo.altSendType + vbCrLf
@@ -2055,7 +2055,7 @@ Private Sub btnCancelReserveRN_Click()
 End Sub
 
 '=========================================================================
-'플러스친구 계정관리 URL을 반환합니다.
+'카카오톡 채널 계정관리 URL을 반환합니다.
 ' - URL 보안정책에 따라 반환된 URL은 30초의 유효시간을 갖습니다.
 '=========================================================================
 Private Sub btnGetPlusFriendMgtURL_Click()
@@ -2072,7 +2072,7 @@ Private Sub btnGetPlusFriendMgtURL_Click()
 End Sub
 
 '=========================================================================
-'팝빌에 등록된 플러스친구 목록을 반환 합니다.
+'팝빌에 등록된 카카오톡 채널 목록을 반환 합니다.
 '=========================================================================
 Private Sub btnListPlusFriendID_Click()
     Dim PlusFriendIDList As Collection
@@ -2087,8 +2087,8 @@ Private Sub btnListPlusFriendID_Click()
     End If
     
     For Each info In PlusFriendIDList
-        tmp = tmp + "plusFriendID (플러스친구 아이디) : " + info.plusFriendID + vbCrLf
-        tmp = tmp + "plusFriendName (플러스친구 이름) : " + info.plusFriendName + vbCrLf
+        tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + info.plusFriendID + vbCrLf
+        tmp = tmp + "plusFriendName (카카오톡 채널 이름) : " + info.plusFriendName + vbCrLf
         tmp = tmp + "regDT (등록일시) : " + info.regDT + vbCrLf + vbCrLf
     Next
     
@@ -2134,7 +2134,7 @@ Private Sub btnListATSTemplate_Click()
         tmp = tmp + "templateCode (템플릿 코드) : " + info.templateCode + vbCrLf
         tmp = tmp + "templateName (템플릿 제목) : " + info.templateName + vbCrLf
         tmp = tmp + "template (템플릿 내용) : " + info.template + vbCrLf + vbCrLf
-        tmp = tmp + "plusFriendID (플러스친구 아이디) : " + info.plusFriendID + vbCrLf + vbCrLf
+        tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + info.plusFriendID + vbCrLf + vbCrLf
    
         If (info.btns Is Nothing) = False Then
             For Each btnInfo In info.btns
