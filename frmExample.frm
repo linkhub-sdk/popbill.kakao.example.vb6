@@ -1144,6 +1144,7 @@ Private Sub btnSendATS_ONE_Click()
     info.altmsg = "알림톡 대체 문자"  '대체문자 내용, 최대 2000byte
     info.rcv = "010123456"            '수신번호
     info.rcvnm = "popbill"            '수신자명
+    info.interOPRefKey = "1234"           '파트너 지정키 (수신건 구분용)
     
     ' 수신자마다 버튼정보 추가시 아래코드 참고
     'Set info.buttonList = New Collection
@@ -1913,6 +1914,7 @@ Private Sub btnGetMessages_Click()
     tmp = tmp + "altCnt (대체문자 건수) : " + sentInfo.altCnt + vbCrLf
     tmp = tmp + "cancelCnt (취소건수) : " + sentInfo.cancelCnt + vbCrLf + vbCrLf
     
+    
     If (sentInfo.btns Is Nothing) = False Then
         tmp = tmp + "==== 버튼정보====" + vbCrLf
         For Each btnInfo In sentInfo.btns
@@ -1928,7 +1930,7 @@ Private Sub btnGetMessages_Click()
     tmp = "====================== 전송결과정보 ======================" + vbCrLf
     tmp = tmp + "state(전송상태 코드) | sendDT(전송일시) | receiveNum(수신번호) |  receiveName(수신자명) | content(알림톡/친구톡 내용) | " + vbCrLf
     tmp = tmp + "result(전송결과 코드) | resultDT(전송결과 수신일시) | altContent(대체문자 내용) | altContentType(대체문자 전송유형) | altSendDT(대체문자 전송일시) | "
-    tmp = tmp + "altResult(대체문자 전송결과 코드) | altResultDT(대체문자 전송결과 수신일시) | receiptNum(접수번호) | requestNum(요청번호)" + vbCrLf
+    tmp = tmp + "altResult(대체문자 전송결과 코드) | altResultDT(대체문자 전송결과 수신일시) | receiptNum(접수번호) | requestNum(요청번호) | interOPRefKey (파트너 지정키)" + vbCrLf
     
     For Each info In sentInfo.msgs
         tmp = tmp + CStr(info.state) + " | "
@@ -1944,7 +1946,8 @@ Private Sub btnGetMessages_Click()
         tmp = tmp + CStr(info.altResult) + " | "
         tmp = tmp + info.altResultDT + " | "
         tmp = tmp + info.receiptNum + " | "
-        tmp = tmp + info.requestNum
+        tmp = tmp + info.requestNum + " | "
+        tmp = tmp + info.interOPRefKey
         tmp = tmp + vbCrLf
     Next
         
