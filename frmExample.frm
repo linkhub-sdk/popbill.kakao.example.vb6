@@ -559,7 +559,7 @@ Attribute VB_Exposed = False
 '
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
-' - 업데이트 일자 : 2020-01-31
+' - 업데이트 일자 : 2020-07-20
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
@@ -1122,7 +1122,7 @@ Private Sub btnSendATS_ONE_Click()
     templateCode = "019020000163"
     
     '팝빌에 사전 등록된 발신번호
-    snd = "07043042992"
+    snd = "01043245117"
     
     '알림톡 내용, 최대 1000자
     content = "[ 팝빌 ]" + vbCrLf
@@ -1144,6 +1144,16 @@ Private Sub btnSendATS_ONE_Click()
     info.altmsg = "알림톡 대체 문자"  '대체문자 내용, 최대 2000byte
     info.rcv = "010123456"            '수신번호
     info.rcvnm = "popbill"            '수신자명
+    
+    ' 수신자마다 버튼정보 추가시 아래코드 참고
+    'Set info.buttonList = New Collection
+    'Dim detailButton As New PBKakaoButton
+    'detailButton.n = "button"
+    'detailButton.t = "WL"
+    'detailButton.u1 = "test.popbill.com"
+    'detailButton.u2 = "www.popbill.com"
+    'info.buttonList.Add detailButton
+    
      
     Messages.Add info
     

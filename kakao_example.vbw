@@ -1,5 +1,5 @@
 frmExample = 86, 101, 1464, 858, , 85, 18, 1444, 869, C
-PBKakaoService = 176, 55, 1430, 645, C
+PBKakaoService = 176, 55, 1430, 645, 
 cStringBuilder = 0, 0, 0, 0, C
 Linkhub = 0, 0, 0, 0, C
 LinkhubToken = 0, 0, 0, 0, C
@@ -12,8 +12,8 @@ PBResponse = 176, 232, 1430, 822, C
 PBPlusFriend = 0, 0, 1254, 590, C
 PBKakaoSenderNumber = 66, 87, 1320, 677, C
 PBATSTemplate = 87, 116, 1342, 706, C
-PBKakaoButton = 110, 145, 1364, 735, C
+PBKakaoButton = 110, 145, 1364, 735, 
 PBKakaoSearchResult = 176, 232, 1430, 822, C
 PBKakaoSentDetail = 198, 261, 1452, 851, C
 PBKakaoSentResult = 44, 58, 1298, 648, C
-PBKakaoReceiver = 154, 203, 1408, 793, C
+PBKakaoReceiver = 154, 203, 1408, 793, 
