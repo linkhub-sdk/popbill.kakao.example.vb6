@@ -1386,7 +1386,7 @@ Private Sub btnSendFTS_ONE_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1395,7 +1395,7 @@ Private Sub btnSendFTS_ONE_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "메시지전달"
-    btn.t = "MD"
+    btn.T = "MD"
     
     Buttons.Add btn
     
@@ -1468,7 +1468,7 @@ Private Sub btnSendFTS_SAME_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1477,7 +1477,7 @@ Private Sub btnSendFTS_SAME_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "메시지전달"
-    btn.t = "MD"
+    btn.T = "MD"
     
     Buttons.Add btn
     
@@ -1544,7 +1544,7 @@ Private Sub btnSendFTS_multi_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1553,7 +1553,7 @@ Private Sub btnSendFTS_multi_Click()
     Set btn = New PBKakaoButton
     
     btn.n = "메시지전달"
-    btn.t = "MD"
+    btn.T = "MD"
     
     Buttons.Add btn
     
@@ -1639,7 +1639,7 @@ Private Sub btnSendFMS_ONE_Click()
     Set btnInfo = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1648,7 +1648,7 @@ Private Sub btnSendFMS_ONE_Click()
     Set btnInfo = New PBKakaoButton
     
     btnInfo.n = "메시지전달"
-    btnInfo.t = "MD"
+    btnInfo.T = "MD"
     
     btnList.Add btnInfo
     
@@ -1741,7 +1741,7 @@ Private Sub btnSendFMS_SAME_Click()
     Set btnInfo = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1750,7 +1750,7 @@ Private Sub btnSendFMS_SAME_Click()
     Set btnInfo = New PBKakaoButton
     
     btnInfo.n = "메시지전달"
-    btnInfo.t = "MD"
+    btnInfo.T = "MD"
     
     btnList.Add btnInfo
     
@@ -1840,7 +1840,7 @@ Private Sub btnSendFMS_MULTI_Click()
     Set btnInfo = New PBKakaoButton
     
     btn.n = "버튼명"                        '버튼명
-    btn.t = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
+    btn.T = "WL"                            '버튼유형 DS-배송조회, WL-웹링크, AL-앱링크, MD-메시지전달 BK-봇키워드
     btn.u1 = "http://www.linkhub.co.kr"     '앱링크-iOS, 웹링크-Mobile
     btn.u2 = "http://www.popbill.com"       '앱링크-Android, 웹링크-PC
     
@@ -1849,7 +1849,7 @@ Private Sub btnSendFMS_MULTI_Click()
     Set btnInfo = New PBKakaoButton
     
     btnInfo.n = "메시지전달"
-    btnInfo.t = "MD"
+    btnInfo.T = "MD"
     
     btnList.Add btnInfo
     
@@ -1908,7 +1908,7 @@ Private Sub btnGetMessages_Click()
         tmp = tmp + "==== 버튼정보====" + vbCrLf
         For Each btnInfo In sentInfo.btns
              tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
-             tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
+             tmp = tmp + "t (버튼유형) : " + btnInfo.T + vbCrLf
              tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
              tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
         Next
@@ -1999,7 +1999,7 @@ Private Sub btnGetMessagesRN_Click()
         tmp = tmp + "==== 버튼정보====" + vbCrLf
         For Each btnInfo In sentInfo.btns
              tmp = tmp + "n (버튼명) : " + btnInfo.n + vbCrLf
-             tmp = tmp + "t (버튼유형) : " + btnInfo.t + vbCrLf
+             tmp = tmp + "t (버튼유형) : " + btnInfo.T + vbCrLf
              tmp = tmp + "u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
              tmp = tmp + "u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
         Next
@@ -2140,7 +2140,7 @@ Private Sub btnListATSTemplate_Click()
         If (info.btns Is Nothing) = False Then
             For Each btnInfo In info.btns
                 tmp = tmp + " n (버튼명) : " + btnInfo.n + vbCrLf
-                tmp = tmp + " t (버튼유형) : " + btnInfo.t + vbCrLf
+                tmp = tmp + " t (버튼유형) : " + btnInfo.T + vbCrLf
                 tmp = tmp + " u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
                 tmp = tmp + " u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
             Next
@@ -2325,5 +2325,6 @@ Private Sub Form_Load()
     
     '인증토큰 IP제한기능 사용여부, True-권장
     KakaoService.IPRestrictOnOff = True
+    
 End Sub
 
