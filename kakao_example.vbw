@@ -1,5 +1,5 @@
-frmExample = 86, 101, 1464, 858, , 85, 18, 1444, 869, C
-PBKakaoService = 203, 334, 1457, 924, 
+frmExample = -24, 36, 1354, 793, , 2, 9, 1361, 968, C
+PBKakaoService = 64, 238, 1318, 828, 
 cStringBuilder = 0, 0, 0, 0, C
 Linkhub = 154, 203, 1429, 852, 
 LinkhubToken = 0, 0, 0, 0, C
@@ -11,7 +11,7 @@ PBJoinForm = 154, 203, 1408, 793, C
 PBResponse = 176, 232, 1430, 822, 
 PBPlusFriend = 0, 0, 1254, 590, 
 PBKakaoSenderNumber = 66, 87, 1320, 677, C
-PBATSTemplate = 87, 116, 1342, 706, C
+PBATSTemplate = 87, 116, 1342, 706, 
 PBKakaoButton = 110, 145, 1364, 735, 
 PBKakaoSearchResult = 176, 232, 1430, 822, 
 PBKakaoSentDetail = 471, 145, 1725, 735, 

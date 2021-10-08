@@ -2,12 +2,12 @@ VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form frmExample 
    Caption         =   "팝빌 카카오톡 API SDK VB6 Example"
-   ClientHeight    =   11775
+   ClientHeight    =   12480
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   17580
    LinkTopic       =   "Form1"
-   ScaleHeight     =   11775
+   ScaleHeight     =   12480
    ScaleWidth      =   17580
    StartUpPosition =   2  '화면 가운데
    Begin VB.CommandButton btnCancelReserveRN 
@@ -15,7 +15,7 @@ Begin VB.Form frmExample
       Height          =   495
       Left            =   9840
       TabIndex        =   65
-      Top             =   7320
+      Top             =   7800
       Width           =   2775
    End
    Begin VB.CommandButton btnGetMessagesRN 
@@ -23,14 +23,14 @@ Begin VB.Form frmExample
       Height          =   495
       Left            =   7080
       TabIndex        =   64
-      Top             =   7320
+      Top             =   7800
       Width           =   2655
    End
    Begin VB.TextBox txtRequestNum 
       Height          =   315
-      Left            =   9000
+      Left            =   9120
       TabIndex        =   63
-      Top             =   6840
+      Top             =   7440
       Width           =   3615
    End
    Begin VB.TextBox txtCorpNum 
@@ -280,7 +280,7 @@ Begin VB.Form frmExample
       Height          =   1335
       Left            =   6720
       TabIndex        =   61
-      Top             =   6600
+      Top             =   7200
       Width           =   6255
       Begin VB.Label Label4 
          Caption         =   "요청번호(requestNum) :"
@@ -293,7 +293,7 @@ Begin VB.Form frmExample
    End
    Begin VB.Frame Frame4 
       Caption         =   "팝빌 카카오톡 관련 기능"
-      Height          =   8415
+      Height          =   9015
       Left            =   120
       TabIndex        =   31
       Top             =   3240
@@ -304,7 +304,7 @@ Begin VB.Form frmExample
          MultiLine       =   -1  'True
          ScrollBars      =   3  '양방향
          TabIndex        =   58
-         Top             =   4920
+         Top             =   5400
          Width           =   16815
       End
       Begin VB.CommandButton btnCancelReserve 
@@ -312,7 +312,7 @@ Begin VB.Form frmExample
          Height          =   495
          Left            =   3120
          TabIndex        =   57
-         Top             =   4080
+         Top             =   4560
          Width           =   2775
       End
       Begin VB.CommandButton btnGetMessages 
@@ -320,23 +320,31 @@ Begin VB.Form frmExample
          Height          =   495
          Left            =   360
          TabIndex        =   56
-         Top             =   4080
+         Top             =   4560
          Width           =   2655
       End
       Begin VB.TextBox txtReceiptNum 
          Height          =   315
          Left            =   2400
          TabIndex        =   55
-         Top             =   3600
+         Top             =   4200
          Width           =   3615
       End
       Begin VB.Frame Frame9 
          Caption         =   "카카오톡 관리"
-         Height          =   2895
+         Height          =   3615
          Left            =   11280
          TabIndex        =   46
          Top             =   240
          Width           =   5775
+         Begin VB.CommandButton btnGetATSTemplate 
+            Caption         =   "알림톡 템플릿 정보 확인"
+            Height          =   495
+            Left            =   120
+            TabIndex        =   66
+            Top             =   2160
+            Width           =   2655
+         End
          Begin VB.CommandButton btnSearch 
             Caption         =   "전송내역 목록 확인"
             Height          =   495
@@ -374,7 +382,7 @@ Begin VB.Form frmExample
             Height          =   495
             Left            =   120
             TabIndex        =   50
-            Top             =   2160
+            Top             =   2760
             Width           =   2655
          End
          Begin VB.CommandButton btnGetATSTemplateMgtURL 
@@ -510,7 +518,7 @@ Begin VB.Form frmExample
          Height          =   1335
          Left            =   120
          TabIndex        =   59
-         Top             =   3360
+         Top             =   3960
          Width           =   6255
          Begin VB.Label Label5 
             Caption         =   "접수번호(receiptNum) :"
@@ -634,6 +642,8 @@ Private Sub btnCheckID_Click()
     
     MsgBox ("응답코드 : " + CStr(Response.code) + vbCrLf + "응답메시지 : " + Response.message)
 End Sub
+
+
 
 '=========================================================================
 ' 사용자를 연동회원으로 가입처리합니다.
@@ -2111,6 +2121,43 @@ Private Sub btnGetATSTemplateMgtURL_Click()
         
     MsgBox "URL : " + vbCrLf + url
 End Sub
+'=========================================================================
+' 승인된 알림톡 템플릿 정보를 확인합니다.
+' - https://docs.popbill.com/kakao/vb/api#GetATSTemplate
+'=========================================================================
+Private Sub btnGetATSTemplate_Click()
+    Dim template As PBATSTemplate
+    Dim btnInfo As PBKakaoButton
+    
+    Dim templateCode As String
+    templateCode = ""
+    
+    Set template = KakaoService.GetATSTemplate(txtCorpNum.Text, templateCode)
+    
+    If template Is Nothing Then
+        MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
+        Exit Sub
+    End If
+    
+    Dim tmp As String
+    tmp = tmp + "==== 알림톡 템플릿 ====" + vbCrLf
+    tmp = tmp + "templateCode (템플릿 코드) : " + template.templateCode + vbCrLf
+    tmp = tmp + "templateName (템플릿 제목) : " + template.templateName + vbCrLf
+    tmp = tmp + "plusFriendID (카카오톡 채널 검색용 아이디) : " + template.plusFriendID + vbCrLf + vbCrLf
+    tmp = tmp + "template (템플릿 내용) : " + template.template + vbCrLf
+    tmp = tmp + "appendix (부가메시지) : " + template.appendix + vbCrLf
+    tmp = tmp + "ads (광고메시지) : " + template.ads + vbCrLf + vbCrLf
+    
+    If (template.btns Is Nothing) = False Then
+        For Each btnInfo In template.btns
+                tmp = tmp + " n (버튼명) : " + btnInfo.n + vbCrLf
+                tmp = tmp + " t (버튼유형) : " + btnInfo.T + vbCrLf
+                tmp = tmp + " u1 (버튼링크1) : " + btnInfo.u1 + vbCrLf
+                tmp = tmp + " u2 (버튼링크2) : " + btnInfo.u2 + vbCrLf + vbCrLf
+            Next
+    End If
+    MsgBox tmp
+End Sub
 
 '=========================================================================
 ' 승인된 알림톡 템플릿 목록을 확인합니다.
@@ -2134,8 +2181,11 @@ Private Sub btnListATSTemplate_Click()
         tmp = tmp + "==== 알림톡 템플릿 ====" + vbCrLf
         tmp = tmp + "templateCode (템플릿 코드) : " + info.templateCode + vbCrLf
         tmp = tmp + "templateName (템플릿 제목) : " + info.templateName + vbCrLf
+        tmp = tmp + "plusFriendID (카카오톡 채널 검색용 아이디) : " + info.plusFriendID + vbCrLf + vbCrLf
+        
         tmp = tmp + "template (템플릿 내용) : " + info.template + vbCrLf + vbCrLf
-        tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + info.plusFriendID + vbCrLf + vbCrLf
+        tmp = tmp + "appendix (부가메시지) : " + info.appendix + vbCrLf
+        tmp = tmp + "ads (광고메시지) : " + info.ads + vbCrLf + vbCrLf
    
         If (info.btns Is Nothing) = False Then
             For Each btnInfo In info.btns
