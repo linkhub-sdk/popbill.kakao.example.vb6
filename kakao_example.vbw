@@ -1,13 +1,13 @@
-frmExample = -24, 36, 1354, 793, , 2, 9, 1361, 968, C
+frmExample = -24, 36, 1354, 793, Z, 2, 9, 1361, 968, C
 PBKakaoService = 64, 238, 1318, 828, 
 cStringBuilder = 0, 0, 0, 0, C
 Linkhub = 154, 203, 1429, 852, 
 LinkhubToken = 0, 0, 0, 0, C
 PBAttachFile = 44, 58, 1298, 648, C
 PBChargeInfo = 88, 116, 1342, 706, C
-PBContactInfo = 110, 145, 1364, 735, C
+PBContactInfo = 110, 145, 1364, 735, 
 PBCorpInfo = 132, 174, 1386, 764, C
-PBJoinForm = 154, 203, 1408, 793, C
+PBJoinForm = 154, 203, 1408, 793, 
 PBResponse = 176, 232, 1430, 822, 
 PBPlusFriend = 0, 0, 1254, 590, 
 PBKakaoSenderNumber = 66, 87, 1320, 677, C
