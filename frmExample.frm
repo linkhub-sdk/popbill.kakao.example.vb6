@@ -607,7 +607,7 @@ Attribute VB_Exposed = False
 '
 ' 팝빌 카카오톡 API VB 6.0 SDK Example
 '
-' - 업데이트 일자 : 2021-10-07
+' - 업데이트 일자 : 2021-10-15
 ' - 연동 기술지원 연락처 : 1600-9854 / 070-4304-2991
 ' - 연동 기술지원 이메일 : code@linkhub.co.kr
 '
