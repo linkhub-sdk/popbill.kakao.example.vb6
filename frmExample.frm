@@ -2392,10 +2392,10 @@ Private Sub btnSearch_Click()
     Dim QString As String
         
     '[필수] 시작일자, 날자형식(yyyyMMdd)
-    SDate = "20210901"
+    SDate = "20220101"
     
     '[필수] 종료일자, 날자형식(yyyyMMdd)
-    EDate = "20210910"
+    EDate = "20220130"
     
     '전송상태값 배열 [0-대기/ 1-전송중 / 2-성공 / 3- 대체 / 4-실패 / 5-취소]
     state.Add "0"
