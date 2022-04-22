@@ -638,7 +638,7 @@ Attribute VB_Exposed = False
 Option Explicit
 
 '링크아이디
-Private Const LinkID = "TESTER"
+Private Const linkID = "TESTER"
 
 '비밀키
 Private Const SecretKey = "SwWxqU+0TErBXy/9TVjIPEnI0VTUMMSQZtJf3Ed8q3I="
@@ -653,7 +653,7 @@ Private KakaoService As New PBKakaoService
 Private Sub btnCheckIsMember_Click()
     Dim Response As PBResponse
     
-    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, LinkID)
+    Set Response = KakaoService.CheckIsMember(txtCorpNum.Text, linkID)
     
     If Response Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -695,7 +695,7 @@ Private Sub btnJoinMember_Click()
     joinData.Password = "asdf$%^123"
     
     '파트너링크 아이디
-    joinData.LinkID = LinkID
+    joinData.linkID = linkID
     
     '사업자번호, '-'제외, 10자리
     joinData.CorpNum = "1234567890"
@@ -2210,7 +2210,7 @@ Private Sub btnListPlusFriendID_Click()
         tmp = tmp + "plusFriendID (카카오톡 채널 아이디) : " + info.plusFriendID + vbCrLf
         tmp = tmp + "plusFriendName (카카오톡 채널 이름) : " + info.plusFriendName + vbCrLf
         tmp = tmp + "regDT (등록일시) : " + info.regDT + vbCrLf
-        tmp = tmp + "state (채널 상태) : " + info.state + vbCrLf
+        tmp = tmp + "state (채널 상태) : " + CStr(info.state) + vbCrLf
         tmp = tmp + "stateDT (채널 상태 일시) : " + info.stateDT + vbCrLf + vbCrLf
     Next
     
@@ -2504,7 +2504,7 @@ End Sub
 Private Sub Form_Load()
 
     '카카오톡 모듈 초기화
-    KakaoService.Initialize LinkID, SecretKey
+    KakaoService.Initialize linkID, SecretKey
     
     '연동환경설정값, True-개발용 False-상업용
     KakaoService.IsTest = True
