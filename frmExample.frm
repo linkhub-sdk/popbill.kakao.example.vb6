@@ -613,7 +613,7 @@ Attribute VB_Exposed = False
 '
 ' 팝빌 카카오톡 API VB SDK Example
 '
-' - 업데이트 일자 : 2022-04-06
+' - 업데이트 일자 : 2022-07-26
 ' - 연동 기술지원 연락처 : 1600-9854
 ' - 연동 기술지원 이메일 : code@linkhubcorp.com
 ' - VB SDK 적용방법 안내 : https://docs.popbill.com/kakao/tutorial/vb
@@ -879,17 +879,17 @@ End Sub
 '=========================================================================
 Private Sub btnGetChargeURL_Click()
 
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetChargeURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetChargeURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -898,17 +898,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetPaymentURL
 '=========================================================================
 Private Sub btnGetPaymentURL_Click()
-    Dim URL As String
+    Dim url As String
            
-    URL = KakaoService.GetPaymentURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetPaymentURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -917,17 +917,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetUseHistoryURL
 '=========================================================================
 Private Sub btnGetUseHistoryURL_Click()
-    Dim URL As String
+    Dim url As String
            
-    URL = KakaoService.GetUseHistoryURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetUseHistoryURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -953,17 +953,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetPartnerURL
 '=========================================================================
 Private Sub btnGetPartnerURL_CHRG_Click()
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetPartnerURL(txtCorpNum.Text, "CHRG")
+    url = KakaoService.GetPartnerURL(txtCorpNum.Text, "CHRG")
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
     
     'Internet Explorer Browser 호출
     Dim IE As Object
@@ -972,7 +972,7 @@ Private Sub btnGetPartnerURL_CHRG_Click()
     Dim strSiteName As String
    
     Set IE = CreateObject("InternetExplorer.Application")
-    strSiteName = URL
+    strSiteName = url
     IE.Navigate strSiteName
     With IE
         .Visible = True     '브라우저창 활성화
@@ -993,17 +993,17 @@ End Sub
 '=========================================================================
 Private Sub btnGetAccessURL_Click()
 
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetAccessURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetAccessURL(txtCorpNum.Text, txtUserID.Text)
         
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
     
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -1054,7 +1054,7 @@ Private Sub btnGetContactInfo_Click()
     
     ContactID = "testkorea"
     
-    Set info = KakaoService.GetContactInfo(txtCorpNum.Text, ContactID, txtUserID.Text)
+    Set info = KakaoService.GetContactInfo(txtCorpNum.Text, ContactID)
     
     If info Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -2177,17 +2177,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetPlusFriendMgtURL
 '=========================================================================
 Private Sub btnGetPlusFriendMgtURL_Click()
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetPlusFriendMgtURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetPlusFriendMgtURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
         
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -2222,17 +2222,17 @@ End Sub
 ' - 반환되는 URL은 보안 정책상 30초 동안 유효하며, 시간을 초과한 후에는 해당 URL을 통한 페이지 접근이 불가합니다.
 '=========================================================================
 Private Sub btnGetATSTemplateMgtURL_Click()
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetATSTemplateMgtURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
         
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -2260,7 +2260,10 @@ Private Sub btnGetATSTemplate_Click()
     tmp = tmp + "plusFriendID (카카오톡 채널 검색용 아이디) : " + template.plusFriendID + vbCrLf + vbCrLf
     tmp = tmp + "template (템플릿 내용) : " + template.template + vbCrLf
     tmp = tmp + "appendix (부가메시지) : " + template.appendix + vbCrLf
-    tmp = tmp + "ads (광고메시지) : " + template.ads + vbCrLf + vbCrLf
+    tmp = tmp + "ads (광고메시지) : " + template.ads + vbCrLf
+    tmp = tmp + "secureYN (보안템플릿 여부) : " + CStr(template.secureYN) + vbCrLf
+    tmp = tmp + "state (상태) : " + CStr(template.state) + vbCrLf
+    tmp = tmp + "stateDT (상태변경 일시) : " + template.stateDT + vbCrLf + vbCrLf
     
     If (template.btns Is Nothing) = False Then
         For Each btnInfo In template.btns
@@ -2298,7 +2301,10 @@ Private Sub btnListATSTemplate_Click()
         tmp = tmp + "template (템플릿 내용) : " + info.template + vbCrLf + vbCrLf
         tmp = tmp + "plusFriendID (카카오톡 채널 검색용 아이디) : " + info.plusFriendID + vbCrLf + vbCrLf
         tmp = tmp + "appendix (부가메시지) : " + info.appendix + vbCrLf
-        tmp = tmp + "ads (광고메시지) : " + info.ads + vbCrLf + vbCrLf
+        tmp = tmp + "ads (광고메시지) : " + info.ads + vbCrLf
+        tmp = tmp + "secureYN (보안템플릿 여부) : " + CStr(info.secureYN) + vbCrLf
+        tmp = tmp + "state (상태) : " + CStr(info.state) + vbCrLf
+        tmp = tmp + "stateDT (상태변경 일시) : " + info.stateDT + vbCrLf + vbCrLf
    
         If (info.btns Is Nothing) = False Then
             For Each btnInfo In info.btns
@@ -2326,7 +2332,7 @@ Private Sub btnCheckSenderNumber_Click()
     
     SenderNumber = "070-4304-2991"
     
-    Set Response = KakaoService.CheckSenderNumber(txtCorpNum.Text, SenderNumber, txtUserID.Text)
+    Set Response = KakaoService.CheckSenderNumber(txtCorpNum.Text, SenderNumber)
     
     If Response Is Nothing Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
@@ -2342,17 +2348,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetSenderNumberMgtURL
 '=========================================================================
 Private Sub btnGetSenderNumberMgtURL_Click()
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetSenderNumberMgtURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
 
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
@@ -2386,17 +2392,17 @@ End Sub
 ' - https://docs.popbill.com/kakao/vb/api#GetSentListURL
 '=========================================================================
 Private Sub btnGetSentListURL_Click()
-    Dim URL As String
+    Dim url As String
     
-    URL = KakaoService.GetSentListURL(txtCorpNum.Text, txtUserID.Text)
+    url = KakaoService.GetSentListURL(txtCorpNum.Text, txtUserID.Text)
     
-    If URL = "" Then
+    If url = "" Then
         MsgBox ("응답코드 : " + CStr(KakaoService.LastErrCode) + vbCrLf + "응답메시지 : " + KakaoService.LastErrMessage)
         Exit Sub
     End If
         
-    MsgBox "URL : " + vbCrLf + URL
-    txtURL.Text = URL
+    MsgBox "URL : " + vbCrLf + url
+    txtURL.Text = url
 End Sub
 
 '=========================================================================
